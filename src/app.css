@@ -1,0 +1,39 @@
+@import 'tailwindcss';
+
+@layer base {
+	html,
+	body {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+	}
+	body {
+		overscroll-behavior: none;
+		background: #131315;
+	}
+	main > :first-child {
+		margin-top: 0 !important;
+	}
+	main > :last-child {
+		margin-bottom: 0 !important;
+	}
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+@keyframes pulse-subtle {
+	0%,
+	100% {
+		opacity: 0.9;
+	}
+	50% {
+		opacity: 0.4;
+	}
+}
+
+.animate-pulse-subtle {
+	animation: pulse-subtle 2s infinite ease-in-out;
+}
+
