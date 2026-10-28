@@ -161,8 +161,8 @@
 		<div class="flex items-center gap-space-md w-1/4 min-w-[240px]">
 			<div class="w-14 h-14 bg-surface-container shrink-0 flex items-center justify-center font-label-sm text-label-sm text-primary-container">CRUDO</div>
 			<div class="overflow-hidden">
-				<div class="font-headline-sm text-headline-sm text-primary uppercase truncate">SOBRECARGA SINÁPTICA</div>
-				<div class="font-label-md text-label-md text-on-surface-variant uppercase truncate">ARCHIVO DEL OLVIDO</div>
+				<div class="font-headline-sm text-headline-sm text-primary truncate">Yellow</div>
+				<div class="font-label-md text-label-md text-on-surface-variant truncate">Coldplay</div>
 			</div>
 			<div class="flex items-center gap-1">
 				<button class="p-1 text-on-surface-variant hover:text-primary-container" type="button"><span class="material-symbols-outlined text-[20px]">favorite</span></button>
