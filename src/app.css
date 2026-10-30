@@ -1,5 +1,94 @@
 @import 'tailwindcss';
 
+/* Modo oscuro basado en la clase `.dark` (equivalente a darkMode: "class") */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Configuración de Tailwind (antes en <script id="tailwind-config"> del layout).
+ * En Tailwind v4 el tema se define con variables CSS dentro de @theme.
+ */
+@theme {
+	/* Colores */
+	--color-on-tertiary-fixed-variant: #46464e;
+	--color-surface-container: #201f21;
+	--color-secondary-fixed-dim: #b8c3ff;
+	--color-on-tertiary-fixed: #1a1b22;
+	--color-inverse-on-surface: #303032;
+	--color-surface-variant: #353437;
+	--color-on-secondary: #002387;
+	--color-inverse-surface: #e5e1e4;
+	--color-on-tertiary-container: #63646c;
+	--color-tertiary-fixed-dim: #c6c5cf;
+	--color-primary-container: #38bdf8;
+	--color-surface-container-low: #1b1b1d;
+	--color-on-tertiary: #2f3038;
+	--color-tertiary-container: #e3e1ec;
+	--color-inverse-primary: #0284c7;
+	--color-tertiary: #ffffff;
+	--color-surface-bright: #39393b;
+	--color-error: #ffb4ab;
+	--color-primary-fixed: #38bdf8;
+	--color-background: #131315;
+	--color-surface-dim: #131315;
+	--color-on-primary-fixed-variant: #075985;
+	--color-tertiary-fixed: #e3e1ec;
+	--color-on-secondary-fixed-variant: #0035bd;
+	--color-on-primary: #082f49;
+	--color-surface-container-highest: #353437;
+	--color-surface-container-lowest: #0e0e10;
+	--color-outline: #64748b;
+	--color-on-surface: #e5e1e4;
+	--color-outline-variant: #334155;
+	--color-on-primary-fixed: #082f49;
+	--color-primary: #ffffff;
+	--color-on-secondary-container: #c6cfff;
+	--color-surface-tint: #0ea5e9;
+	--color-primary-fixed-dim: #0ea5e9;
+	--color-on-background: #e5e1e4;
+	--color-secondary-fixed: #dde1ff;
+	--color-secondary-container: #0044eb;
+	--color-on-primary-container: #075985;
+	--color-secondary: #b8c3ff;
+	--color-on-error-container: #ffdad6;
+	--color-on-surface-variant: #cbd5e1;
+	--color-on-secondary-fixed: #001355;
+	--color-on-error: #690005;
+	--color-error-container: #93000a;
+	--color-surface: #131315;
+	--color-surface-container-high: #2a2a2c;
+
+	/* Espaciados */
+	--spacing-gutter: 1rem;
+	--spacing-space-lg: 1.5rem;
+	--spacing-space-sm: 0.5rem;
+	--spacing-margin: 1rem;
+	--spacing-space-xl: 2.5rem;
+	--spacing-margin-desktop: 2rem;
+	--spacing-space-xs: 0.25rem;
+	--spacing-gutter-desktop: 1.5rem;
+	--spacing-space-md: 1rem;
+
+	/* Radios */
+	--radius-lg: 0.5rem;
+	--radius-xl: 0.75rem;
+
+	/* Tipografías */
+	--font-headline-md: 'Space Grotesk';
+	--font-headline-lg-mobile: 'Space Grotesk';
+	--font-body-md: 'Inter';
+	--font-body-lg: 'Inter';
+	--font-display-lg-mobile: 'Space Grotesk';
+	--font-label-lg: 'JetBrains Mono';
+	--font-label-sm: 'JetBrains Mono';
+	--font-label-md: 'JetBrains Mono';
+	--font-display-lg: 'Space Grotesk';
+	--font-headline-sm: 'Space Grotesk';
+	--font-headline-lg: 'Space Grotesk';
+	--font-display-md: 'Space Grotesk';
+	--font-display-sm: 'Space Grotesk';
+	--font-body-sm: 'Inter';
+}
+
 @layer base {
 	html,
 	body {
@@ -36,4 +125,3 @@
 .animate-pulse-subtle {
 	animation: pulse-subtle 2s infinite ease-in-out;
 }
-

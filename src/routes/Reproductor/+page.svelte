@@ -1,4 +1,4 @@
-﻿<svelte:head>
+<svelte:head>
 	<link href="https://fonts.googleapis.com" rel="preconnect" />
 	<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
 	<link
@@ -10,97 +10,6 @@
 		rel="stylesheet"
 	/>
 	<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
-	<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-	<script id="tailwind-config">
-		tailwind.config = {
-			darkMode: "class",
-			theme: {
-				extend: {
-					colors: {
-						"on-tertiary-fixed-variant": "#46464e",
-						"surface-container": "#201f21",
-						"secondary-fixed-dim": "#b8c3ff",
-						"on-tertiary-fixed": "#1a1b22",
-						"inverse-on-surface": "#303032",
-						"surface-variant": "#353437",
-						"on-secondary": "#002387",
-						"inverse-surface": "#e5e1e4",
-						"on-tertiary-container": "#63646c",
-						"tertiary-fixed-dim": "#c6c5cf",
-						"primary-container": "#c3f400",
-						"surface-container-low": "#1b1b1d",
-						"on-tertiary": "#2f3038",
-						"tertiary-container": "#e3e1ec",
-						"inverse-primary": "#506600",
-						"tertiary": "#ffffff",
-						"surface-bright": "#39393b",
-						error: "#ffb4ab",
-						"primary-fixed": "#c3f400",
-						background: "#131315",
-						"surface-dim": "#131315",
-						"on-primary-fixed-variant": "#3c4d00",
-						"tertiary-fixed": "#e3e1ec",
-						"on-secondary-fixed-variant": "#0035bd",
-						"on-primary": "#283500",
-						"surface-container-highest": "#353437",
-						"surface-container-lowest": "#0e0e10",
-						outline: "#8e9379",
-						"on-surface": "#e5e1e4",
-						"outline-variant": "#444933",
-						"on-primary-fixed": "#161e00",
-						primary: "#ffffff",
-						"on-secondary-container": "#c6cfff",
-						"surface-tint": "#abd600",
-						"primary-fixed-dim": "#abd600",
-						"on-background": "#e5e1e4",
-						"secondary-fixed": "#dde1ff",
-						"secondary-container": "#0044eb",
-						"on-primary-container": "#556d00",
-						secondary: "#b8c3ff",
-						"on-error-container": "#ffdad6",
-						"on-surface-variant": "#c4c9ac",
-						"on-secondary-fixed": "#001355",
-						"on-error": "#690005",
-						"error-container": "#93000a",
-						surface: "#131315",
-						"surface-container-high": "#2a2a2c"
-					},
-					borderRadius: {
-						DEFAULT: "0.25rem",
-						lg: "0.5rem",
-						xl: "0.75rem",
-						full: "9999px"
-					},
-					spacing: {
-						gutter: "1rem",
-						"space-lg": "1.5rem",
-						"space-sm": "0.5rem",
-						margin: "1rem",
-						"space-xl": "2.5rem",
-						"margin-desktop": "2rem",
-						"space-xs": "0.25rem",
-						"gutter-desktop": "1.5rem",
-						"space-md": "1rem"
-					},
-					fontFamily: {
-						"headline-md": ["Space Grotesk"],
-						"headline-lg-mobile": ["Space Grotesk"],
-						"body-md": ["Inter"],
-						"body-lg": ["Inter"],
-						"display-lg-mobile": ["Space Grotesk"],
-						"label-lg": ["JetBrains Mono"],
-						"label-sm": ["JetBrains Mono"],
-						"label-md": ["JetBrains Mono"],
-						"display-lg": ["Space Grotesk"],
-						"headline-sm": ["Space Grotesk"],
-						"headline-lg": ["Space Grotesk"],
-						"display-md": ["Space Grotesk"],
-						"display-sm": ["Space Grotesk"]
-					}
-				}
-			}
-		};
-	</script>
 </svelte:head>
 
 <div class="dark w-full min-h-screen relative overflow-hidden flex flex-col" style="background: #131315;">
@@ -138,7 +47,7 @@
 	<!-- MAIN IMMERSIVE 3D VIEWPORT -->
 	<main class="relative w-full flex-1 overflow-hidden flex flex-col justify-between items-center px-4 md:px-12 py-4 z-10">
 		<div class="absolute top-6 left-6 md:top-8 md:left-12 z-30 pointer-events-auto">
-			<button aria-label="Volver" type="button" class="flex items-center justify-center p-2 text-primary-container hover:text-white transition-all hover:scale-105 group" style="color: #ccff00;">
+			<button aria-label="Volver" type="button" class="flex items-center justify-center p-2 text-primary-container hover:text-white transition-all hover:scale-105 group" style="color: #38bdf8;">
 				<span class="material-symbols-outlined text-[28px]">arrow_back</span>
 			</button>
 		</div>
@@ -290,7 +199,7 @@
 		</div>
 
 		<!-- Subtle Radial Glow & Vignette -->
-		<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(195,244,0,0.06)_0%,transparent_70%)] pointer-events-none z-[1]"></div>
+		<div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.06)_0%,transparent_70%)] pointer-events-none z-[1]"></div>
 		<div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/80 pointer-events-none z-[1]"></div>
 
 		<!-- TOP TECHNICAL BREADCRUMB & BROAD METADATA -->
@@ -304,7 +213,7 @@
 		<div class="w-full max-w-7xl flex flex-col items-center justify-center my-auto z-10 text-center pointer-events-none px-2">
 			<!-- Expanded Prominent Vinyl / Holographic Art Container -->
 			<div class="relative pointer-events-auto group mb-4">
-				<div class="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 bg-surface-container border-2 border-surface-container-high shadow-[0_0_60px_rgba(0,0,0,0.8),0_0_30px_rgba(195,244,0,0.15)] relative overflow-hidden transition-all duration-700 group-hover:border-primary-container/80 group-hover:scale-[1.02]">
+				<div class="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 bg-surface-container border-2 border-surface-container-high shadow-[0_0_60px_rgba(0,0,0,0.8),0_0_30px_rgba(56,189,248,0.15)] relative overflow-hidden transition-all duration-700 group-hover:border-primary-container/80 group-hover:scale-[1.02]">
 					<img
 						alt="HELIX UNIT // CYBERNETIC VOID"
 						class="w-full h-full object-cover contrast-125 filter group-hover:scale-105 transition-transform duration-700"
@@ -359,23 +268,23 @@
 						<div class="flex-1 bg-primary-container/60 h-[62%]"></div>
 						<div class="flex-1 bg-primary-container/70 h-[78%]"></div>
 						<div class="flex-1 bg-primary-container/85 h-[92%]"></div>
-						<div class="flex-1 bg-primary-container h-[100%] shadow-[0_0_8px_rgba(195,244,0,0.8)]"></div>
+						<div class="flex-1 bg-primary-container h-[100%] shadow-[0_0_8px_rgba(56,189,248,0.8)]"></div>
 						<div class="flex-1 bg-primary-container h-[85%]"></div>
 						<div class="flex-1 bg-primary-container/90 h-[70%]"></div>
 						<div class="flex-1 bg-primary-container/80 h-[58%]"></div>
 						<div class="flex-1 bg-primary-container/70 h-[82%]"></div>
-						<div class="flex-1 bg-primary-container h-[95%] shadow-[0_0_8px_rgba(195,244,0,0.8)]"></div>
+						<div class="flex-1 bg-primary-container h-[95%] shadow-[0_0_8px_rgba(56,189,248,0.8)]"></div>
 						<div class="flex-1 bg-primary-container h-[75%]"></div>
 						<div class="flex-1 bg-primary-container/90 h-[60%]"></div>
 						<div class="flex-1 bg-primary-container/70 h-[44%]"></div>
 						<div class="flex-1 bg-primary-container/60 h-[52%]"></div>
 						<div class="flex-1 bg-primary-container/75 h-[68%]"></div>
 						<div class="flex-1 bg-primary-container/90 h-[84%]"></div>
-						<div class="flex-1 bg-primary-container h-[90%] shadow-[0_0_8px_rgba(195,244,0,0.8)]"></div>
+						<div class="flex-1 bg-primary-container h-[90%] shadow-[0_0_8px_rgba(56,189,248,0.8)]"></div>
 						<div class="flex-1 bg-primary-container/85 h-[72%]"></div>
 						<div class="flex-1 bg-primary-container/70 h-[55%]"></div>
 						<div class="w-[2px] h-full bg-white relative mx-0.5">
-							<div class="absolute -top-1 -left-[3px] w-2 h-2 bg-primary-container rotate-45 shadow-[0_0_6px_#c3f400]"></div>
+							<div class="absolute -top-1 -left-[3px] w-2 h-2 bg-primary-container rotate-45 shadow-[0_0_6px_#38bdf8]"></div>
 						</div>
 						<div class="flex-1 bg-surface-container-high h-[40%]"></div>
 						<div class="flex-1 bg-surface-container-high h-[50%]"></div>
@@ -396,7 +305,7 @@
 					<div class="mt-2 flex items-center justify-between font-mono text-label-md">
 						<span class="text-primary-container font-bold tracking-wider">02:44</span>
 						<div class="flex-1 mx-space-sm relative h-1.5 bg-surface-container-high flex items-center cursor-pointer">
-							<div class="h-full bg-primary-container w-[44%] shadow-[0_0_8px_rgba(195,244,0,0.5)]"></div>
+							<div class="h-full bg-primary-container w-[44%] shadow-[0_0_8px_rgba(56,189,248,0.5)]"></div>
 							<div class="w-3 h-3 bg-white border border-black shadow"></div>
 						</div>
 						<span class="text-on-surface-variant tracking-wider">06:12</span>
@@ -412,7 +321,7 @@
 					</button>
 					<button
 						aria-label="Reproducir o pausar"
-						class="px-space-lg py-2.5 bg-primary-container text-on-primary font-label-lg text-label-lg font-bold uppercase tracking-wider flex items-center gap-2 hover:bg-white transition-all shadow-[0_0_15px_rgba(195,244,0,0.3)] hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]"
+						class="px-space-lg py-2.5 bg-primary-container text-on-primary font-label-lg text-label-lg font-bold uppercase tracking-wider flex items-center gap-2 hover:bg-white transition-all shadow-[0_0_15px_rgba(56,189,248,0.3)] hover:shadow-[0_0_20px_rgba(255,255,255,0.5)]"
 						type="button"
 					>
 						<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">pause</span>[ PAUSAR ]

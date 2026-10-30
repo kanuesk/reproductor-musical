@@ -1,31 +1,42 @@
+<script>
+	import axios from "axios";
+    import CardSound from "../lib/components/CardSound.svelte";
+
+
+    const { data } = $props()
+  
+</script>
+
+
+
 <!-- HEADER / TECHNICAL DASHBOARD STATUS -->
 <section class="flex flex-col gap-3 p-space-md bg-surface-container-lowest border border-surface-container-high/60 relative overflow-hidden">
 	<div class="flex items-center gap-2 overflow-x-auto pb-1 select-none">
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#ccff00]/60 text-on-surface hover:text-[#ccff00] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
+		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
 			<span class="">HOUSE</span>
 		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#ccff00]/60 text-on-surface hover:text-[#ccff00] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
+		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
 			<span class="">POP</span>
 		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#ccff00]/60 text-on-surface hover:text-[#ccff00] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
+		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
 			<span class="">Rock</span>
 		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#ccff00]/60 text-on-surface hover:text-[#ccff00] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
+		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
 			<span class="">Vallenato</span>
 		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#ccff00]/60 text-on-surface hover:text-[#ccff00] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
+		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
 			<span class="">Reggaeton</span>
 		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#ccff00]/60 text-on-surface hover:text-[#ccff00] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
+		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
 			<span class="">Salsa</span>
 		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#ccff00]/60 text-on-surface hover:text-[#ccff00] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
+		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
 			<span class="">Rock Alternativo</span>
 		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#ccff00]/60 text-on-surface hover:text-[#ccff00] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
+		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
 			<span class="">Metalcore</span>
 		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#ccff00]/60 text-on-surface hover:text-[#ccff00] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
+		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
 
 			<span class="">Electronica</span>
 		</button>
@@ -36,7 +47,7 @@
 <section class="flex flex-col gap-space-md mt-8">
 	<div class="flex items-center justify-between pb-space-xs">
 		<div class="flex items-baseline gap-space-sm">
-			<h2 class="font-headline-md text-headline-md uppercase font-bold tracking-tight text-[#ccff00]">ESCUCHADOS RECIENTEMENTE</h2>
+			<h2 class="font-headline-md text-headline-md uppercase font-bold tracking-tight text-[#38bdf8]">ESCUCHADOS RECIENTEMENTE</h2>
 		</div>
 		<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-container uppercase tracking-wider transition-colors flex items-center gap-1 group" href="#">
 			<span class="">VER TODO</span>
@@ -44,19 +55,24 @@
 		</a>
 	</div>
 	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+
+			{#each data.tracks as track}
+			   <CardSound {track}></CardSound>
+			   
+			{/each}
 		<!-- Card 1 -->
 		<article class="group bg-surface-container-lowest flex flex-col p-space-sm hover:bg-surface-container-low transition-all duration-200">
 			<div class="relative w-full aspect-square overflow-hidden bg-surface-container-high">
 				<img class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300" data-alt="Dark aesthetic album cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwisQDby9e64YhZQITfcBWjVEoZw5w6No1cUPb4d7A3CAIlzqhb2esgb5g&s=10" />
-				<div class="absolute top-2 right-2 px-1.5 py-0.5 bg-surface-container-lowest/90 font-label-sm text-[9px] text-on-surface uppercase">134 BPM</div>
-				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#ccff00] text-black flex items-center justify-center shadow-lg shadow-[#ccff00]/30 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
+
+				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
 					<svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 				</button>
 			</div>
 			<div class="flex flex-col gap-1 pt-space-sm pb-1">
 				<div class="flex items-center justify-between gap-1">
 					<h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate group-hover:text-primary-container transition-colors">World Hold On</h3>
-					<button type="button" aria-label="Favorito" class="p-1 text-on-surface-variant hover:text-[#ccff00] transition-colors duration-200 cursor-pointer shrink-0 flex items-center justify-center hover:scale-110">
+					<button type="button" aria-label="Favorito" class="p-1 text-on-surface-variant hover:text-[#38bdf8] transition-colors duration-200 cursor-pointer shrink-0 flex items-center justify-center hover:scale-110">
 						<svg class="w-6 h-6 transition-transform active:scale-125" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
 					</button>
 				</div>
@@ -67,15 +83,15 @@
 		<article class="group bg-surface-container-lowest flex flex-col p-space-sm hover:bg-surface-container-low transition-all duration-200">
 			<div class="relative w-full aspect-square overflow-hidden bg-surface-container-high">
 				<img class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300" data-alt="Cassette tape" src="https://cdn-images.dzcdn.net/images/cover/64efde12017fb5ed7bdc3d429c175e39/0x1900-000000-80-0-0.jpg" />
-				<div class="absolute top-2 right-2 px-1.5 py-0.5 bg-surface-container-lowest/90 font-label-sm text-[9px] text-on-surface uppercase">142 BPM</div>
-				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#ccff00] text-black flex items-center justify-center shadow-lg shadow-[#ccff00]/30 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
+
+				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
 					<svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 				</button>
 			</div>
 			<div class="flex flex-col gap-1 pt-space-sm pb-1">
 				<div class="flex items-center justify-between gap-1">
 					<h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate group-hover:text-primary-container transition-colors">I Could Be the One (Nicktim)</h3>
-					<button type="button" aria-label="Favorito" class="p-1 text-on-surface-variant hover:text-[#ccff00] transition-colors duration-200 cursor-pointer shrink-0 flex items-center justify-center hover:scale-110">
+					<button type="button" aria-label="Favorito" class="p-1 text-on-surface-variant hover:text-[#38bdf8] transition-colors duration-200 cursor-pointer shrink-0 flex items-center justify-center hover:scale-110">
 						<svg class="w-6 h-6 transition-transform active:scale-125" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
 					</button>
 				</div>
@@ -86,15 +102,15 @@
 		<article class="group bg-surface-container-lowest flex flex-col p-space-sm hover:bg-surface-container-low transition-all duration-200">
 			<div class="relative w-full aspect-square overflow-hidden bg-surface-container-high">
 				<img class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300" data-alt="Industrial album" src="https://upload.wikimedia.org/wikipedia/en/5/51/Michael_Jackson_-_Bad.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" />
-				<div class="absolute top-2 right-2 px-1.5 py-0.5 bg-surface-container-lowest/90 font-label-sm text-[9px] text-on-surface uppercase">138 BPM</div>
-				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#ccff00] text-black flex items-center justify-center shadow-lg shadow-[#ccff00]/30 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
+
+				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
 					<svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 				</button>
 			</div>
 			<div class="flex flex-col gap-1 pt-space-sm pb-1">
 				<div class="flex items-center justify-between gap-1">
 					<h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate group-hover:text-primary-container transition-colors">Smooth Criminal</h3>
-					<button type="button" aria-label="Favorito" class="p-1 text-on-surface-variant hover:text-[#ccff00] transition-colors duration-200 cursor-pointer shrink-0 flex items-center justify-center hover:scale-110">
+					<button type="button" aria-label="Favorito" class="p-1 text-on-surface-variant hover:text-[#38bdf8] transition-colors duration-200 cursor-pointer shrink-0 flex items-center justify-center hover:scale-110">
 						<svg class="w-6 h-6 transition-transform active:scale-125" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
 					</button>
 				</div>
@@ -105,15 +121,15 @@
 		<article class="group bg-surface-container-lowest flex flex-col p-space-sm hover:bg-surface-container-low transition-all duration-200">
 			<div class="relative w-full aspect-square overflow-hidden bg-surface-container-high">
 				<img class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300" data-alt="Underground dark ambient" src="https://i.scdn.co/image/ab67616d0000b273932fe6d260177091a0e115ba" />
-				<div class="absolute top-2 right-2 px-1.5 py-0.5 bg-surface-container-lowest/90 font-label-sm text-[9px] text-on-surface uppercase">130 BPM</div>
-				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#ccff00] text-black flex items-center justify-center shadow-lg shadow-[#ccff00]/30 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
+
+				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
 					<svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 				</button>
 			</div>
 			<div class="flex flex-col gap-1 pt-space-sm pb-1">
 				<div class="flex items-center justify-between gap-1">
 					<h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate group-hover:text-primary-container transition-colors">¿Dónde es el after?</h3>
-					<button type="button" aria-label="Favorito" class="p-1 text-on-surface-variant hover:text-[#ccff00] transition-colors duration-200 cursor-pointer shrink-0 flex items-center justify-center hover:scale-110">
+					<button type="button" aria-label="Favorito" class="p-1 text-on-surface-variant hover:text-[#38bdf8] transition-colors duration-200 cursor-pointer shrink-0 flex items-center justify-center hover:scale-110">
 						<svg class="w-6 h-6 transition-transform active:scale-125" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
 					</button>
 				</div>
@@ -127,7 +143,7 @@
 <section class="flex flex-col gap-space-md mt-8">
 	<div class="flex items-center justify-between pb-space-xs">
 		<div class="flex items-baseline gap-space-sm">
-			<h2 class="font-headline-md text-headline-md uppercase font-bold tracking-tight text-[#ccff00]">PLAYLISTS</h2>
+			<h2 class="font-headline-md text-headline-md uppercase font-bold tracking-tight text-[#38bdf8]">PLAYLISTS</h2>
 		</div>
 		<button class="px-3 py-1.5 bg-primary-container hover:bg-surface-tint text-on-primary font-label-md text-label-md font-bold uppercase tracking-wider transition-all duration-150 flex items-center gap-1.5 active:translate-x-0.5 active:translate-y-0.5" type="button">
 			<span class="material-symbols-outlined text-[16px]">add_box</span>
@@ -148,7 +164,7 @@
 				</div>
 			</div>
 			<div class="flex items-center pt-space-xs bg-surface-container-lowest/50 justify-end">
-				<button class="px-3 py-1 bg-surface-container hover:bg-primary-container hover:text-on-primary font-label-sm text-label-sm uppercase font-semibold transition-colors text-[#ccff00]" type="button">[ CARGAR EN COLA ]</button>
+				<button class="px-3 py-1 bg-surface-container hover:bg-primary-container hover:text-on-primary font-label-sm text-label-sm uppercase font-semibold transition-colors text-[#38bdf8]" type="button">[ CARGAR EN COLA ]</button>
 			</div>
 		</article>
 		<!-- Playlist 2 -->
@@ -164,7 +180,7 @@
 				</div>
 			</div>
 			<div class="flex items-center pt-space-xs bg-surface-container-lowest/50 justify-end">
-				<button class="px-3 py-1 bg-surface-container hover:bg-primary-container hover:text-on-primary font-label-sm text-label-sm uppercase font-semibold transition-colors text-[#ccff00]" type="button">[ CARGAR EN COLA ]</button>
+				<button class="px-3 py-1 bg-surface-container hover:bg-primary-container hover:text-on-primary font-label-sm text-label-sm uppercase font-semibold transition-colors text-[#38bdf8]" type="button">[ CARGAR EN COLA ]</button>
 			</div>
 		</article>
 		<!-- Playlist 3 -->
@@ -180,7 +196,7 @@
 				</div>
 			</div>
 			<div class="flex items-center pt-space-xs bg-surface-container-lowest/50 justify-end">
-				<button class="px-3 py-1 bg-surface-container hover:bg-primary-container hover:text-on-primary font-label-sm text-label-sm uppercase font-semibold transition-colors text-[#ccff00]" type="button">[ CARGAR EN COLA ]</button>
+				<button class="px-3 py-1 bg-surface-container hover:bg-primary-container hover:text-on-primary font-label-sm text-label-sm uppercase font-semibold transition-colors text-[#38bdf8]" type="button">[ CARGAR EN COLA ]</button>
 			</div>
 		</article>
 		<!-- Playlist 4 -->
@@ -196,7 +212,7 @@
 				</div>
 			</div>
 			<div class="flex items-center pt-space-xs bg-surface-container-lowest/50 justify-end">
-				<button class="px-3 py-1 bg-surface-container hover:bg-primary-container hover:text-on-primary font-label-sm text-label-sm uppercase font-semibold transition-colors text-[#ccff00]" type="button">[ CARGAR EN COLA ]</button>
+				<button class="px-3 py-1 bg-surface-container hover:bg-primary-container hover:text-on-primary font-label-sm text-label-sm uppercase font-semibold transition-colors text-[#38bdf8]" type="button">[ CARGAR EN COLA ]</button>
 			</div>
 		</article>
 	</div>
@@ -206,7 +222,7 @@
 <section class="flex flex-col gap-space-md mt-8">
 	<div class="flex items-center justify-between pb-space-xs">
 		<div class="flex items-baseline gap-space-sm">
-			<h2 class="font-headline-md text-headline-md uppercase font-bold tracking-tight text-[#ccff00]">TUS ARTISTAS FAVORITOS</h2>
+			<h2 class="font-headline-md text-headline-md uppercase font-bold tracking-tight text-[#38bdf8]">TUS ARTISTAS FAVORITOS</h2>
 		</div>
 	</div>
 	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-space-md">
