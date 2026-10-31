@@ -45,7 +45,7 @@
 
 <!-- SECTION 1: RECENTLY PLAYED -->
 <section class="flex flex-col gap-space-md mt-8">
-	<div class="flex items-center justify-between pb-space-xs">
+	<div class="flex flex-wrap items-center justify-between gap-2 pb-space-xs">
 		<div class="flex items-baseline gap-space-sm">
 			<h2 class="font-headline-md text-headline-md uppercase font-bold tracking-tight text-[#38bdf8]">ESCUCHADOS RECIENTEMENTE</h2>
 		</div>
@@ -65,7 +65,7 @@
 			<div class="relative w-full aspect-square overflow-hidden bg-surface-container-high">
 				<img class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300" data-alt="Dark aesthetic album cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwisQDby9e64YhZQITfcBWjVEoZw5w6No1cUPb4d7A3CAIlzqhb2esgb5g&s=10" />
 
-				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
+				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-2 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
 					<svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 				</button>
 			</div>
@@ -84,7 +84,7 @@
 			<div class="relative w-full aspect-square overflow-hidden bg-surface-container-high">
 				<img class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300" data-alt="Cassette tape" src="https://cdn-images.dzcdn.net/images/cover/64efde12017fb5ed7bdc3d429c175e39/0x1900-000000-80-0-0.jpg" />
 
-				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
+				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-2 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
 					<svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 				</button>
 			</div>
@@ -103,7 +103,7 @@
 			<div class="relative w-full aspect-square overflow-hidden bg-surface-container-high">
 				<img class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300" data-alt="Industrial album" src="https://upload.wikimedia.org/wikipedia/en/5/51/Michael_Jackson_-_Bad.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" />
 
-				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
+				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-2 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
 					<svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 				</button>
 			</div>
@@ -122,7 +122,7 @@
 			<div class="relative w-full aspect-square overflow-hidden bg-surface-container-high">
 				<img class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300" data-alt="Underground dark ambient" src="https://i.scdn.co/image/ab67616d0000b273932fe6d260177091a0e115ba" />
 
-				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
+				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-2 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
 					<svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 				</button>
 			</div>
@@ -141,7 +141,7 @@
 
 <!-- SECTION 2: PLAYLISTS -->
 <section class="flex flex-col gap-space-md mt-8">
-	<div class="flex items-center justify-between pb-space-xs">
+	<div class="flex flex-wrap items-center justify-between gap-2 pb-space-xs">
 		<div class="flex items-baseline gap-space-sm">
 			<h2 class="font-headline-md text-headline-md uppercase font-bold tracking-tight text-[#38bdf8]">PLAYLISTS</h2>
 		</div>
@@ -154,7 +154,7 @@
 		<!-- Playlist 1 -->
 		<article class="p-space-md bg-surface-container-lowest hover:bg-surface-container-low transition-colors duration-200 flex flex-col justify-between gap-space-md group">
 			<div class="flex gap-space-md items-start">
-				<div class="w-24 h-24 bg-surface-container shrink-0 relative overflow-hidden">
+				<div class="w-20 h-20 sm:w-24 sm:h-24 bg-surface-container shrink-0 relative overflow-hidden">
 					<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style="background-image: url('https://i1.sndcdn.com/artworks-CYLuLi5HpbuHNGVD-H5jnhw-t500x500.jpg')"></div>
 					<div class="absolute inset-0 bg-primary-container/10 mix-blend-color"></div>
 				</div>
@@ -170,7 +170,7 @@
 		<!-- Playlist 2 -->
 		<article class="p-space-md bg-surface-container-lowest hover:bg-surface-container-low transition-colors duration-200 flex flex-col justify-between gap-space-md group">
 			<div class="flex gap-space-md items-start">
-				<div class="w-24 h-24 bg-surface-container shrink-0 relative overflow-hidden">
+				<div class="w-20 h-20 sm:w-24 sm:h-24 bg-surface-container shrink-0 relative overflow-hidden">
 					<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style="background-image: url('https://hips.hearstapps.com/hmg-prod/images/mejores-canciones-90s-heroes-silencio-1622141746.jpg')"></div>
 					<div class="absolute inset-0 bg-primary-container/10 mix-blend-color"></div>
 				</div>
@@ -186,7 +186,7 @@
 		<!-- Playlist 3 -->
 		<article class="p-space-md bg-surface-container-lowest hover:bg-surface-container-low transition-colors duration-200 flex flex-col justify-between gap-space-md group">
 			<div class="flex gap-space-md items-start">
-				<div class="w-24 h-24 bg-surface-container shrink-0 relative overflow-hidden">
+				<div class="w-20 h-20 sm:w-24 sm:h-24 bg-surface-container shrink-0 relative overflow-hidden">
 					<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm9b3z3Q6YQxy1IzoewmLlg0Y5N_bUgpKeXhecCWW-iGTuda0zMJrqjRyd&s=10')"></div>
 					<div class="absolute inset-0 bg-primary-container/10 mix-blend-color"></div>
 				</div>
@@ -202,7 +202,7 @@
 		<!-- Playlist 4 -->
 		<article class="p-space-md bg-surface-container-lowest hover:bg-surface-container-low transition-colors duration-200 flex flex-col justify-between gap-space-md group">
 			<div class="flex gap-space-md items-start">
-				<div class="w-24 h-24 bg-surface-container shrink-0 relative overflow-hidden">
+				<div class="w-20 h-20 sm:w-24 sm:h-24 bg-surface-container shrink-0 relative overflow-hidden">
 					<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-300" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAi71x-DxCmN_YeYa0-25XiK0Rb0QIAZMAXh1B682qHARwOt0vdM0QAc_XrMZhxG6uKd2SgPZOKMOIJj7sWLCe78sairfdpBSaR3ip9SgIgjeOGcxcl7mCnUJ1agVldUwBVq5WfA-mmZevFHvFVwSh2MQWtq1LeCe6KPq-ikrp9LWbMM0pwStM1ki4oktAlROOlRomZmO1V6bYN_xw__zQ6iKEY77vAVPvazpXBjw')"></div>
 					<div class="absolute inset-0 bg-primary-container/10 mix-blend-color"></div>
 				</div>

@@ -59,6 +59,41 @@ export const EstablecerProgreso = (porcentaje) => {
 	CancionEstado.progreso = Math.min(100, Math.max(0, porcentaje));
 };
 
+/** @type {HTMLAudioElement | null} */
+let elementoAudio = null;
+
+/** @param {HTMLAudioElement | null} elemento */
+export const RegistrarElementoAudio = (elemento) => {
+	elementoAudio = elemento;
+};
+
+/** @param {number} porcentaje */
+export const BuscarProgreso = (porcentaje) => {
+	const valor = Math.min(100, Math.max(0, porcentaje));
+	EstablecerProgreso(valor);
+
+	if (elementoAudio && Number.isFinite(elementoAudio.duration) && elementoAudio.duration > 0) {
+		elementoAudio.currentTime = (valor / 100) * elementoAudio.duration;
+	}
+};
+
+/**
+ * Devuelve el progreso real del audio para animaciones continuas.
+ * @returns {number}
+ */
+export const ObtenerProgresoActual = () => {
+	if (
+		CancionEstado.reproduciendo &&
+		elementoAudio &&
+		Number.isFinite(elementoAudio.duration) &&
+		elementoAudio.duration > 0
+	) {
+		return Math.min(100, Math.max(0, (elementoAudio.currentTime / elementoAudio.duration) * 100));
+	}
+
+	return CancionEstado.progreso;
+};
+
 /** @param {number} segundos */
 export const EstablecerDuracion = (segundos) => {
 	CancionEstado.duracion = Number.isFinite(segundos) && segundos > 0 ? segundos : 0;

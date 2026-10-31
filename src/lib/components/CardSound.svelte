@@ -9,7 +9,7 @@
 			<div class="relative w-full aspect-square overflow-hidden bg-surface-container-high">
 				<img class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300" data-alt="Dark aesthetic album cover" src={props.track.artist.image} />
 
-				<button aria-label="Reproducir pista" onclick={() => ActualizarCancionActual(props.track)} class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
+				<button aria-label="Reproducir pista" onclick={() => ActualizarCancionActual(props.track)} class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-2 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
 					<svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
 				</button>
 			</div>
