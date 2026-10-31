@@ -231,13 +231,22 @@
 					const particleField = new THREE.Points(particleGeo, particleMat);
 					scene.add(particleField);
 
-					// Datos del analizador para que el conjunto 3D responda al ritmo.
+					// Datos del analizador para separar bombo (kick) y caja (snare).
 					let datosFrecuencia = null;
 					let datosFrecuenciaAnterior = null;
-					let ultimoFlujo = 0;
-					let promedioLento = 0;
-					let pulsoGraves = 0;
-					let ultimoGolpe = 0;
+
+					let energiaKick = 0;
+					let energiaSnare = 0;
+					let flujoKick = 0;
+					let flujoSnare = 0;
+					let promedioKick = 0;
+					let promedioSnare = 0;
+					let envKick = 0;
+					let envSnare = 0;
+					let pulsoKick = 0;
+					let pulsoSnare = 0;
+					let ultimoKick = 0;
+					let ultimoSnare = 0;
 
 					const obtenerAnalizadorAudio = () => {
 						const puente = window.__reproductorObtenerAnalizador;
@@ -285,10 +294,12 @@
 						mouseX += (targetX - mouseX) * 0.05;
 						mouseY += (targetY - mouseY) * 0.05;
 
-						// Energía de graves: es la que marca los golpes del ritmo.
+						// Bandas separadas: bombo en los graves, caja en medios/agudos.
 						const analizador = obtenerAnalizadorAudio();
-						let energiaGraves = 0;
-						ultimoFlujo = 0;
+						energiaKick = 0;
+						energiaSnare = 0;
+						flujoKick = 0;
+						flujoSnare = 0;
 
 						if (analizador) {
 							if (!datosFrecuencia || datosFrecuencia.length !== analizador.frequencyBinCount) {
@@ -297,65 +308,110 @@
 							}
 
 							analizador.getByteFrequencyData(datosFrecuencia);
-							let suma = 0;
-							let cuentas = 0;
-							let flujo = 0;
-							const limite = Math.min(12, datosFrecuencia.length);
 
-							for (let i = 1; i < limite; i++) {
+							const finKick = Math.min(3, datosFrecuencia.length);
+							const inicioSnare = Math.min(6, datosFrecuencia.length);
+							const finSnare = Math.min(30, datosFrecuencia.length);
+
+							let sumaKick = 0;
+							let cuentaKick = 0;
+							let flujoKickTemp = 0;
+							for (let i = 1; i < finKick; i++) {
 								const diferencia = datosFrecuencia[i] - datosFrecuenciaAnterior[i];
-								if (diferencia > 0) flujo += diferencia;
-								suma += datosFrecuencia[i];
-								cuentas++;
+								if (diferencia > 0) flujoKickTemp += diferencia;
+								sumaKick += datosFrecuencia[i];
+								cuentaKick++;
 							}
 
-							energiaGraves = cuentas > 0 ? suma / cuentas / 255 : 0;
-							ultimoFlujo = cuentas > 0 ? flujo / cuentas / 255 : 0;
+							let sumaSnare = 0;
+							let cuentaSnare = 0;
+							let flujoSnareTemp = 0;
+							for (let i = inicioSnare; i < finSnare; i++) {
+								const diferencia = datosFrecuencia[i] - datosFrecuenciaAnterior[i];
+								if (diferencia > 0) flujoSnareTemp += diferencia;
+								sumaSnare += datosFrecuencia[i];
+								cuentaSnare++;
+							}
+
+							energiaKick = cuentaKick > 0 ? sumaKick / cuentaKick / 255 : 0;
+							flujoKick = cuentaKick > 0 ? flujoKickTemp / cuentaKick / 255 : 0;
+							energiaSnare = cuentaSnare > 0 ? sumaSnare / cuentaSnare / 255 : 0;
+							flujoSnare = cuentaSnare > 0 ? flujoSnareTemp / cuentaSnare / 255 : 0;
 							datosFrecuenciaAnterior.set(datosFrecuencia);
 						}
 
-						// El promedio arranca con el nivel actual para no disparar en cada beat.
-						if (promedioLento === 0 && energiaGraves > 0) {
-							promedioLento = energiaGraves;
+						if (promedioKick === 0 && energiaKick > 0) promedioKick = energiaKick;
+						if (promedioSnare === 0 && energiaSnare > 0) promedioSnare = energiaSnare;
+
+						// Disparos independientes: el bombo mueve el núcleo y la caja los anillos.
+						const umbralKick = Math.max(0.16, promedioKick * 1.12);
+						const umbralSnare = Math.max(0.1, promedioSnare * 1.15);
+						const hayKick =
+							energiaKick > umbralKick &&
+							flujoKick > 0.018 &&
+							elapsedTime - ultimoKick > 0.18;
+						const haySnare =
+							energiaSnare > umbralSnare &&
+							flujoSnare > 0.012 &&
+							elapsedTime - ultimoSnare > 0.18;
+
+						if (hayKick) {
+							pulsoKick = Math.min(1, pulsoKick + 0.55);
+							ultimoKick = elapsedTime;
 						}
 
-						// Solo los picos claramente por encima del promedio activan el salto.
-						const umbralPico = Math.max(0.3, promedioLento * 1.2);
-						const hayGolpe =
-							energiaGraves > umbralPico &&
-							ultimoFlujo > 0.015 &&
-							elapsedTime - ultimoGolpe > 1.4;
-
-						if (hayGolpe) {
-							pulsoGraves = Math.min(1, pulsoGraves + 0.5);
-							ultimoGolpe = elapsedTime;
+						if (haySnare) {
+							pulsoSnare = Math.min(1, pulsoSnare + 0.5);
+							ultimoSnare = elapsedTime;
 						}
 
-						const factorPromedio = 1 - Math.exp(-deltaTiempo / 5);
-						promedioLento += (energiaGraves - promedioLento) * factorPromedio;
-						pulsoGraves = Math.max(0, pulsoGraves * Math.exp(-2.6 * deltaTiempo));
+						// Envolventes suaves para que el movimiento no sea solo un golpe seco.
+						const ataqueKick = 1 - Math.exp(-deltaTiempo * 26);
+						const liberacionKick = 1 - Math.exp(-deltaTiempo * 5);
+						envKick += (energiaKick - envKick) * (energiaKick > envKick ? ataqueKick : liberacionKick);
+
+						const ataqueSnare = 1 - Math.exp(-deltaTiempo * 30);
+						const liberacionSnare = 1 - Math.exp(-deltaTiempo * 6);
+						envSnare += (energiaSnare - envSnare) * (energiaSnare > envSnare ? ataqueSnare : liberacionSnare);
+
+						const factorPromedio = 1 - Math.exp(-deltaTiempo / 4);
+						promedioKick += (energiaKick - promedioKick) * factorPromedio;
+						promedioSnare += (energiaSnare - promedioSnare) * factorPromedio;
+						pulsoKick = Math.max(0, pulsoKick * Math.exp(-7 * deltaTiempo));
+						pulsoSnare = Math.max(0, pulsoSnare * Math.exp(-5.5 * deltaTiempo));
 
 						mainGroup.rotation.y = elapsedTime * 0.18 + mouseX * 0.8;
 						mainGroup.rotation.x = Math.sin(elapsedTime * 0.12) * 0.2 + mouseY * 0.6;
-						mainGroup.rotation.z = Math.cos(elapsedTime * 0.15) * 0.1;
+						mainGroup.rotation.z =
+							Math.cos(elapsedTime * 0.15) * 0.1 + Math.sin(elapsedTime * 0.9) * 0.012 + pulsoKick * 0.008;
 
-						// El grupo entero respira suavemente y salta solo en los picos.
+						// El bombo da el golpe del núcleo; la caja hace respirar los anillos.
 						const respiracion = Math.sin(elapsedTime * 2.2) * 0.012;
-						const escalaGrupo = 1 + respiracion + pulsoGraves * 0.07;
+						const escalaGrupo = 1 + respiracion + envKick * 0.018 + pulsoKick * 0.045;
 						mainGroup.scale.set(escalaGrupo, escalaGrupo, escalaGrupo);
-						mainGroup.position.y = pulsoGraves * 0.12;
+						mainGroup.position.y = Math.sin(elapsedTime * 1.4) * 0.012 + pulsoKick * 0.075;
 
-						ring1.rotation.z = elapsedTime * 0.3;
-						ring2.rotation.z = -elapsedTime * 0.2;
-						ring1.scale.setScalar(1 + pulsoGraves * 0.1);
-						ring2.scale.setScalar(1 + pulsoGraves * 0.15);
+						ring1.rotation.z =
+							elapsedTime * 0.3 + Math.sin(elapsedTime * 1.1) * 0.06 + pulsoSnare * 0.05;
+						ring2.rotation.z =
+							-elapsedTime * 0.2 + Math.cos(elapsedTime * 0.9) * 0.05 - pulsoSnare * 0.04;
+						ring1.scale.setScalar(1 + envSnare * 0.025 + pulsoSnare * 0.07);
+						ring2.scale.setScalar(1 + envSnare * 0.035 + pulsoSnare * 0.105);
 
-						const pulse = 1 + Math.sin(elapsedTime * 2.8) * 0.03 + pulsoGraves * 0.12;
+						const pulse = 1 + Math.sin(elapsedTime * 2.8) * 0.025 + envKick * 0.025 + pulsoKick * 0.085;
 						innerMesh.scale.set(pulse, pulse, pulse);
+						innerMesh.rotation.y = -elapsedTime * 0.12;
+						innerMesh.rotation.x = Math.sin(elapsedTime * 0.6) * 0.06;
 
-						particleMat.size = 0.035 + pulsoGraves * 0.008;
-						particleField.scale.setScalar(1 + pulsoGraves * 0.035);
-						particleField.rotation.y = -elapsedTime * 0.025;
+						ringMat1.opacity = Math.min(0.9, 0.55 + envSnare * 0.18 + pulsoSnare * 0.12);
+						ringMat2.opacity = Math.min(0.65, 0.22 + envSnare * 0.16 + pulsoSnare * 0.1);
+						wireframeMat.opacity = Math.min(0.92, 0.68 + envSnare * 0.08 + pulsoSnare * 0.1);
+						innerMat.opacity = Math.min(0.75, 0.4 + envKick * 0.1 + pulsoKick * 0.08);
+
+						pointsMat.size = 0.055 + envKick * 0.003 + pulsoKick * 0.006;
+						particleMat.size = 0.035 + envSnare * 0.003 + pulsoSnare * 0.006;
+						particleField.scale.setScalar(1 + envSnare * 0.012 + pulsoSnare * 0.025);
+						particleField.rotation.y = -elapsedTime * 0.025 + Math.sin(elapsedTime * 0.3) * 0.012;
 
 						renderer.render(scene, camera);
 					};
