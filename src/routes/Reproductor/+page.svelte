@@ -5,6 +5,8 @@
 		AlternarReproduccion,
 		AlternarAleatorio,
 		AlternarRepetir,
+		AlternarSilencio,
+		EstablecerVolumen,
 		BuscarProgreso,
 		ObtenerProgresoActual
 	} from '$lib/state/cancion.svelte.js';
@@ -27,6 +29,15 @@
 	const progreso = $derived(CancionEstado.progreso);
 	const duracion = $derived(CancionEstado.duracion);
 	const tiempoActual = $derived((progreso / 100) * duracion);
+
+	const volumen = $derived(CancionEstado.silenciado ? 0 : CancionEstado.volumen);
+	const iconoVolumen = $derived(
+		CancionEstado.silenciado || CancionEstado.volumen === 0
+			? 'volume_off'
+			: CancionEstado.volumen < 50
+				? 'volume_down'
+				: 'volume_up'
+	);
 
 	const TOTAL_BARRAS = 34;
 
@@ -52,8 +63,9 @@
 
 		const actualizar = () => {
 			const analizador = ObtenerAnalizador();
+			const reproduciendo = CancionEstado.reproduciendo;
 
-			if (CancionEstado.reproduciendo && analizador) {
+			if (reproduciendo && analizador) {
 				if (datos.length !== analizador.frequencyBinCount) {
 					datos = new Uint8Array(analizador.frequencyBinCount);
 				}
@@ -76,7 +88,10 @@
 					return { altura: 8 + nivel * 92, nivel };
 				});
 				modo = 'audio';
-			} else if (modo !== 'reposo') {
+			} else if (!reproduciendo && modo === 'audio') {
+				// Al pausar, conserva el último cuadro de la animación en lugar de reiniciarla.
+				modo = 'pausado';
+			} else if (!reproduciendo && modo !== 'pausado') {
 				barras = patronReposo.map((barra) => ({ ...barra }));
 				modo = 'reposo';
 			}
@@ -100,6 +115,10 @@
 		BuscarProgreso(Number((event.currentTarget as HTMLInputElement).value));
 	}
 
+	function actualizarVolumen(event: Event) {
+		EstablecerVolumen(Number((event.currentTarget as HTMLInputElement).value));
+	}
+
 	function volver() {
 		void goto('/');
 	}
@@ -119,10 +138,10 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
 </svelte:head>
 
-<div class="dark w-full min-h-screen relative overflow-hidden flex flex-col" style="background: #131315;">
+<div class="dark w-full h-full relative overflow-hidden flex flex-col" style="background: #131315;">
 
 	<!-- MAIN IMMERSIVE 3D VIEWPORT -->
-	<main class="relative w-full flex-1 overflow-hidden flex flex-col justify-between items-center px-4 md:px-12 py-4 z-10">
+	<main class="relative w-full flex-1 min-h-0 overflow-hidden flex flex-col justify-between items-center px-4 md:px-12 py-3 md:py-4 z-10">
 		<div class="absolute top-6 left-6 md:top-8 md:left-12 z-30 pointer-events-auto">
 			<button aria-label="Volver" type="button" onclick={volver} class="flex items-center justify-center p-2 text-primary-container hover:text-white transition-all hover:scale-105 group cursor-pointer" style="color: #38bdf8;">
 				<span class="material-symbols-outlined text-[28px]">arrow_back</span>
@@ -382,35 +401,35 @@
 
 						mainGroup.rotation.y = elapsedTime * 0.18 + mouseX * 0.8;
 						mainGroup.rotation.x = Math.sin(elapsedTime * 0.12) * 0.2 + mouseY * 0.6;
-						mainGroup.rotation.z =
-							Math.cos(elapsedTime * 0.15) * 0.1 + Math.sin(elapsedTime * 0.9) * 0.012 + pulsoKick * 0.008;
+						mainGroup.rotation.z = Math.cos(elapsedTime * 0.15) * 0.1 + Math.sin(elapsedTime * 0.9) * 0.012;
 
-						// El bombo da el golpe del núcleo; la caja hace respirar los anillos.
+						// Solo las dos esferas reaccionan al audio; anillos y partículas mantienen su movimiento constante.
 						const respiracion = Math.sin(elapsedTime * 2.2) * 0.012;
-						const escalaGrupo = 1 + respiracion + envKick * 0.018 + pulsoKick * 0.045;
-						mainGroup.scale.set(escalaGrupo, escalaGrupo, escalaGrupo);
-						mainGroup.position.y = Math.sin(elapsedTime * 1.4) * 0.012 + pulsoKick * 0.075;
+						mainGroup.scale.setScalar(1 + respiracion);
+						mainGroup.position.y = Math.sin(elapsedTime * 1.4) * 0.012;
 
-						ring1.rotation.z =
-							elapsedTime * 0.3 + Math.sin(elapsedTime * 1.1) * 0.06 + pulsoSnare * 0.05;
-						ring2.rotation.z =
-							-elapsedTime * 0.2 + Math.cos(elapsedTime * 0.9) * 0.05 - pulsoSnare * 0.04;
-						ring1.scale.setScalar(1 + envSnare * 0.025 + pulsoSnare * 0.07);
-						ring2.scale.setScalar(1 + envSnare * 0.035 + pulsoSnare * 0.105);
+						// Esfera blanca: escala y brillo según la caja (snare).
+						const escalaBlanca = 1 + envSnare * 0.025 + pulsoSnare * 0.075;
+						wireframeMesh.scale.setScalar(escalaBlanca);
+						wireframeMesh.position.y = pulsoSnare * 0.06;
+						wireframeMat.opacity = Math.min(0.92, 0.68 + envSnare * 0.08 + pulsoSnare * 0.1);
 
+						// Esfera azul: escala y brillo según el bombo (kick).
 						const pulse = 1 + Math.sin(elapsedTime * 2.8) * 0.025 + envKick * 0.025 + pulsoKick * 0.085;
 						innerMesh.scale.set(pulse, pulse, pulse);
+						innerMesh.position.y = pulsoKick * 0.06;
 						innerMesh.rotation.y = -elapsedTime * 0.12;
 						innerMesh.rotation.x = Math.sin(elapsedTime * 0.6) * 0.06;
-
-						ringMat1.opacity = Math.min(0.9, 0.55 + envSnare * 0.18 + pulsoSnare * 0.12);
-						ringMat2.opacity = Math.min(0.65, 0.22 + envSnare * 0.16 + pulsoSnare * 0.1);
-						wireframeMat.opacity = Math.min(0.92, 0.68 + envSnare * 0.08 + pulsoSnare * 0.1);
 						innerMat.opacity = Math.min(0.75, 0.4 + envKick * 0.1 + pulsoKick * 0.08);
 
-						pointsMat.size = 0.055 + envKick * 0.003 + pulsoKick * 0.006;
-						particleMat.size = 0.035 + envSnare * 0.003 + pulsoSnare * 0.006;
-						particleField.scale.setScalar(1 + envSnare * 0.012 + pulsoSnare * 0.025);
+						// Anillos: rotación constante, sin respuesta al audio.
+						ring1.rotation.z = elapsedTime * 0.3 + Math.sin(elapsedTime * 1.1) * 0.06;
+						ring2.rotation.z = -elapsedTime * 0.2 + Math.cos(elapsedTime * 0.9) * 0.05;
+
+						// Puntos y partículas: tamaño y escala fijos.
+						pointsMat.size = 0.055;
+						particleMat.size = 0.035;
+						particleField.scale.setScalar(1);
 						particleField.rotation.y = -elapsedTime * 0.025 + Math.sin(elapsedTime * 0.3) * 0.012;
 
 						renderer.render(scene, camera);
@@ -428,8 +447,8 @@
 		<!-- CENTRAL IMMERSIVE ZONE: EXPANDED ARTWORK & MASSIVE TYPOGRAPHY -->
 		<div class="w-full max-w-7xl flex flex-col items-center justify-center my-auto z-10 text-center pointer-events-none px-2">
 			<!-- Expanded Prominent Vinyl / Holographic Art Container -->
-			<div class="relative pointer-events-auto group mb-4">
-				<div class="w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-80 lg:h-80 bg-surface-container border-2 border-surface-container-high shadow-[0_0_60px_rgba(0,0,0,0.8),0_0_30px_rgba(56,189,248,0.15)] relative overflow-hidden transition-all duration-700 group-hover:border-primary-container/80 group-hover:scale-[1.02]">
+			<div class="relative pointer-events-auto group mb-3">
+				<div class="w-[clamp(9rem,34dvh,20rem)] h-[clamp(9rem,34dvh,20rem)] bg-surface-container border-2 border-surface-container-high shadow-[0_0_60px_rgba(0,0,0,0.8),0_0_30px_rgba(56,189,248,0.15)] relative overflow-hidden transition-all duration-700 group-hover:border-primary-container/80 group-hover:scale-[1.02]">
 					<img
 						alt={`Portada de ${titulo}`}
 						class="w-full h-full object-cover contrast-125 filter group-hover:scale-105 transition-transform duration-700"
@@ -444,12 +463,12 @@
 			</div>
 			<!-- MASSIVE EXPANDED TYPOGRAPHY SPANNING FULL PAGE WIDTH -->
 			<div class="w-full flex flex-col items-center select-none">
-				<h1 class="w-full font-display-lg text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter text-white leading-none drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)] break-words">
+				<h1 class="w-full font-display-lg text-[clamp(2rem,11dvh,8rem)] font-black uppercase tracking-tighter text-white leading-none drop-shadow-[0_4px_30px_rgba(0,0,0,0.9)] break-words">
 					{titulo}
 				</h1>
-				<div class="w-full flex items-center justify-center gap-3 mt-3">
+				<div class="w-full flex items-center justify-center gap-3 mt-2">
 					<div class="h-[1px] flex-1 max-w-xs bg-gradient-to-r from-transparent to-primary-container/40"></div>
-					<div class="font-mono text-sm sm:text-base md:text-xl font-bold uppercase tracking-[0.35em] text-primary-container drop-shadow-sm text-center break-words">
+					<div class="font-mono text-[clamp(0.75rem,2.2dvh,1.25rem)] font-bold uppercase tracking-[0.35em] text-primary-container drop-shadow-sm text-center break-words">
 						{artista}
 					</div>
 					<div class="h-[1px] flex-1 max-w-xs bg-gradient-to-l from-transparent to-primary-container/40"></div>
@@ -472,11 +491,11 @@
 				</button>
 			</div>
 			<!-- Bottom Compact Controls & Waveform HUD -->
-			<section class="w-full max-w-4xl bg-surface-container-lowest/90 backdrop-blur-md border border-surface-container-high/80 p-4 md:p-5 relative flex flex-col items-center justify-center shadow-2xl">
+			<section class="w-full max-w-4xl bg-surface-container-lowest/90 backdrop-blur-md border border-surface-container-high/80 p-[clamp(0.5rem,2dvh,1.25rem)] relative flex flex-col items-center justify-center shadow-2xl">
 				<!-- Audio Waveform Visualizer -->
 				<div class="w-full relative">
 					<div
-						class="w-full h-12 md:h-16 flex items-end gap-[3px] p-1 overflow-hidden bg-transparent"
+						class="w-full h-[clamp(2rem,8dvh,4rem)] flex items-end gap-[3px] p-1 overflow-hidden bg-transparent"
 						aria-hidden="true"
 					>
 						{#each barrasVisibles as barra}
@@ -526,7 +545,7 @@
 					</div>
 				</div>
 				<!-- Transport Controls -->
-				<div class="flex items-center justify-center gap-space-sm mt-3">
+				<div class="flex flex-wrap items-center justify-center gap-space-sm mt-[clamp(0.375rem,1.5dvh,0.75rem)]">
 					<button
 						aria-label="Aleatorio"
 						aria-pressed={CancionEstado.aleatorio}
@@ -566,8 +585,85 @@
 					>
 						<span class="material-symbols-outlined text-[20px]">repeat</span>
 					</button>
+					<!-- Control de volumen -->
+					<div class="flex items-center gap-2 px-2.5 py-1.5 bg-surface-container">
+						<button
+							aria-label={CancionEstado.silenciado ? 'Activar sonido' : 'Silenciar'}
+							aria-pressed={CancionEstado.silenciado}
+							class="flex items-center justify-center transition-colors cursor-pointer {CancionEstado.silenciado
+								? 'text-primary-container'
+								: 'text-on-surface-variant hover:text-on-surface'}"
+							type="button"
+							onclick={AlternarSilencio}
+						>
+							<span class="material-symbols-outlined text-[20px]">{iconoVolumen}</span>
+						</button>
+						<input
+							class="volumen-rango w-16 sm:w-24 md:w-28"
+							style={`--relleno: ${volumen}%`}
+							type="range"
+							min="0"
+							max="100"
+							step="1"
+							value={volumen}
+							oninput={actualizarVolumen}
+							aria-label="Volumen"
+						/>
+						<span class="hidden md:block font-mono text-[11px] tracking-wider text-on-surface-variant tabular-nums">
+							{volumen.toString().padStart(3, '0')}
+						</span>
+					</div>
 				</div>
 			</section>
 		</div>
 	</main>
 </div>
+
+<style>
+	.volumen-rango {
+		-webkit-appearance: none;
+		appearance: none;
+		height: 1rem;
+		background: transparent;
+		cursor: pointer;
+	}
+
+	.volumen-rango::-webkit-slider-runnable-track {
+		height: 4px;
+		background: linear-gradient(to right, #38bdf8 var(--relleno, 0%), #2a2a2c var(--relleno, 0%));
+	}
+
+	.volumen-rango::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		appearance: none;
+		width: 8px;
+		height: 8px;
+		margin-top: -2px;
+		background: #ffffff;
+		border: none;
+		border-radius: 0;
+	}
+
+	.volumen-rango::-moz-range-track {
+		height: 4px;
+		background: #2a2a2c;
+	}
+
+	.volumen-rango::-moz-range-progress {
+		height: 4px;
+		background: #38bdf8;
+	}
+
+	.volumen-rango::-moz-range-thumb {
+		width: 8px;
+		height: 8px;
+		background: #ffffff;
+		border: none;
+		border-radius: 0;
+	}
+
+	.volumen-rango:focus-visible {
+		outline: 1px solid #38bdf8;
+		outline-offset: 4px;
+	}
+</style>

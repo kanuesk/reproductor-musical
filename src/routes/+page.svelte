@@ -9,42 +9,9 @@
 
 
 
-<!-- HEADER / TECHNICAL DASHBOARD STATUS -->
-<section class="flex flex-col gap-3 p-space-md bg-surface-container-lowest border border-surface-container-high/60 relative overflow-hidden">
-	<div class="flex items-center gap-2 overflow-x-auto pb-1 select-none">
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
-			<span class="">HOUSE</span>
-		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
-			<span class="">POP</span>
-		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
-			<span class="">Rock</span>
-		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
-			<span class="">Vallenato</span>
-		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
-			<span class="">Reggaeton</span>
-		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
-			<span class="">Salsa</span>
-		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
-			<span class="">Rock Alternativo</span>
-		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
-			<span class="">Metalcore</span>
-		</button>
-		<button class="group shrink-0 flex items-center gap-1.5 px-3 py-1.5 bg-surface-container hover:bg-surface-container-high hover:border-[#38bdf8]/60 text-on-surface hover:text-[#38bdf8] border border-transparent font-headline-sm text-label-md uppercase font-bold tracking-wider transition-all duration-150 active:translate-x-0.5 active:translate-y-0.5" type="button">
-
-			<span class="">Electronica</span>
-		</button>
-	</div>
-</section>
 
 <!-- SECTION 1: RECENTLY PLAYED -->
-<section class="flex flex-col gap-space-md mt-8">
+<section class="flex flex-col gap-space-md mt-2">
 	<div class="flex flex-wrap items-center justify-between gap-2 pb-space-xs">
 		<div class="flex items-baseline gap-space-sm">
 			<h2 class="font-headline-md text-headline-md uppercase font-bold tracking-tight text-[#38bdf8]">ESCUCHADOS RECIENTEMENTE</h2>
@@ -54,88 +21,13 @@
 			<span class="material-symbols-outlined text-[14px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
 		</a>
 	</div>
-	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+	<div class="barra-deslizante flex gap-space-md overflow-x-auto pb-4 snap-x snap-mandatory overscroll-x-contain">
 
 			{#each data.tracks as track}
-			   <CardSound {track}></CardSound>
-			   
+			   <div class="w-40 sm:w-48 lg:w-52 shrink-0 snap-start">
+			   	   <CardSound {track}></CardSound>
+			   </div>
 			{/each}
-		<!-- Card 1 -->
-		<article class="group bg-surface-container-lowest flex flex-col p-space-sm hover:bg-surface-container-low transition-all duration-200">
-			<div class="relative w-full aspect-square overflow-hidden bg-surface-container-high">
-				<img class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300" data-alt="Dark aesthetic album cover" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwisQDby9e64YhZQITfcBWjVEoZw5w6No1cUPb4d7A3CAIlzqhb2esgb5g&s=10" />
-
-				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-2 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
-					<svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-				</button>
-			</div>
-			<div class="flex flex-col gap-1 pt-space-sm pb-1">
-				<div class="flex items-center justify-between gap-1">
-					<h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate group-hover:text-primary-container transition-colors">World Hold On</h3>
-					<button type="button" aria-label="Favorito" class="p-1 text-on-surface-variant hover:text-[#38bdf8] transition-colors duration-200 cursor-pointer shrink-0 flex items-center justify-center hover:scale-110">
-						<svg class="w-6 h-6 transition-transform active:scale-125" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-					</button>
-				</div>
-				<p class="font-label-md text-label-md text-on-surface-variant truncate">Bob Sinclar</p>
-			</div>
-		</article>
-		<!-- Card 2 -->
-		<article class="group bg-surface-container-lowest flex flex-col p-space-sm hover:bg-surface-container-low transition-all duration-200">
-			<div class="relative w-full aspect-square overflow-hidden bg-surface-container-high">
-				<img class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300" data-alt="Cassette tape" src="https://cdn-images.dzcdn.net/images/cover/64efde12017fb5ed7bdc3d429c175e39/0x1900-000000-80-0-0.jpg" />
-
-				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-2 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
-					<svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-				</button>
-			</div>
-			<div class="flex flex-col gap-1 pt-space-sm pb-1">
-				<div class="flex items-center justify-between gap-1">
-					<h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate group-hover:text-primary-container transition-colors">I Could Be the One (Nicktim)</h3>
-					<button type="button" aria-label="Favorito" class="p-1 text-on-surface-variant hover:text-[#38bdf8] transition-colors duration-200 cursor-pointer shrink-0 flex items-center justify-center hover:scale-110">
-						<svg class="w-6 h-6 transition-transform active:scale-125" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-					</button>
-				</div>
-				<p class="font-label-md text-label-md text-on-surface-variant truncate">Avicii</p>
-			</div>
-		</article>
-		<!-- Card 3 -->
-		<article class="group bg-surface-container-lowest flex flex-col p-space-sm hover:bg-surface-container-low transition-all duration-200">
-			<div class="relative w-full aspect-square overflow-hidden bg-surface-container-high">
-				<img class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300" data-alt="Industrial album" src="https://upload.wikimedia.org/wikipedia/en/5/51/Michael_Jackson_-_Bad.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original" />
-
-				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-2 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
-					<svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-				</button>
-			</div>
-			<div class="flex flex-col gap-1 pt-space-sm pb-1">
-				<div class="flex items-center justify-between gap-1">
-					<h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate group-hover:text-primary-container transition-colors">Smooth Criminal</h3>
-					<button type="button" aria-label="Favorito" class="p-1 text-on-surface-variant hover:text-[#38bdf8] transition-colors duration-200 cursor-pointer shrink-0 flex items-center justify-center hover:scale-110">
-						<svg class="w-6 h-6 transition-transform active:scale-125" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-					</button>
-				</div>
-				<p class="font-label-md text-label-md text-on-surface-variant truncate">Michael Jackson</p>
-			</div>
-		</article>
-		<!-- Card 4 -->
-		<article class="group bg-surface-container-lowest flex flex-col p-space-sm hover:bg-surface-container-low transition-all duration-200">
-			<div class="relative w-full aspect-square overflow-hidden bg-surface-container-high">
-				<img class="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300" data-alt="Underground dark ambient" src="https://i.scdn.co/image/ab67616d0000b273932fe6d260177091a0e115ba" />
-
-				<button aria-label="Reproducir pista" class="absolute bottom-3 right-3 z-20 w-10 h-10 rounded-full bg-[#38bdf8] text-black flex items-center justify-center shadow-lg shadow-[#38bdf8]/30 opacity-100 translate-y-0 lg:opacity-0 lg:translate-y-2 lg:group-hover:opacity-100 lg:group-hover:translate-y-0 transition-all duration-200 hover:scale-110 cursor-pointer" type="button">
-					<svg class="w-4 h-4 fill-current ml-0.5" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-				</button>
-			</div>
-			<div class="flex flex-col gap-1 pt-space-sm pb-1">
-				<div class="flex items-center justify-between gap-1">
-					<h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate group-hover:text-primary-container transition-colors">¿Dónde es el after?</h3>
-					<button type="button" aria-label="Favorito" class="p-1 text-on-surface-variant hover:text-[#38bdf8] transition-colors duration-200 cursor-pointer shrink-0 flex items-center justify-center hover:scale-110">
-						<svg class="w-6 h-6 transition-transform active:scale-125" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-					</button>
-				</div>
-				<p class="font-label-md text-label-md text-on-surface-variant truncate">Rawayana</p>
-			</div>
-		</article>
 	</div>
 </section>
 
@@ -288,3 +180,41 @@
 		</article>
 	</div>
 </section>
+
+<style>
+	/* Barra de desplazamiento horizontal visible para escritorio. */
+	.barra-deslizante {
+		scrollbar-width: thin;
+		scrollbar-color: #38bdf8 #2a2a2c;
+	}
+
+	.barra-deslizante::-webkit-scrollbar {
+		display: block;
+		height: 8px;
+	}
+
+	.barra-deslizante::-webkit-scrollbar-track {
+		background: #2a2a2c;
+		border-radius: 0;
+	}
+
+	.barra-deslizante::-webkit-scrollbar-thumb {
+		background: #38bdf8;
+		border-radius: 0;
+	}
+
+	.barra-deslizante::-webkit-scrollbar-thumb:hover {
+		background: #7dd3fc;
+	}
+
+	/* En pantallas táctiles se mantiene oculta (se desliza con el dedo). */
+	@media (pointer: coarse) {
+		.barra-deslizante {
+			scrollbar-width: none;
+		}
+
+		.barra-deslizante::-webkit-scrollbar {
+			display: none;
+		}
+	}
+</style>
