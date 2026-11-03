@@ -38,7 +38,7 @@
 			]
 		},
 		'Billie Eilish': {
-			imagen: 'https://i.scdn.co/image/ab6761610000e5eb999f8e0b2f7b7f7b7f7b7f7b',
+			imagen: 'https://www.impericon.com/cdn/shop/articles/20251211_BEtrailerscreenshot_1_52fddf51-601c-49c2-af5d-df79da40fb82.jpg?v=1765455896&width=1475',
 			nombre: 'BILLIE EILISH',
 			descripcion: 'Cantante y compositora estadounidense, conocida por su estilo único y letras introspectivas.',
 			pistas: [
@@ -50,7 +50,7 @@
 			]
 		},
 		'Radiohead': {
-			imagen: 'https://i.scdn.co/image/ab6761610000e5eb959527d2fabc9c64287e57b9',
+			imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAMezSLeaj6VmnS-VMnJ1Tsu0npep6Wd1cVztLO4LwAeO3hyqBlfcush4&s=10',
 			nombre: 'RADIOHEAD',
 			descripcion: 'Banda británica de rock alternativo, conocida por su innovación y experimentación musical.',
 			pistas: [
@@ -196,15 +196,15 @@
 			<div class="flex flex-col lg:flex-row gap-space-xl">
 				<div class="lg:w-80 shrink-0 flex flex-col">
 					<div class="relative aspect-square w-full bg-surface-container-high overflow-hidden border border-surface-container-high">
-						<img alt="SYNAPSE OVERLOAD EP Cover" class="w-full h-full object-cover grayscale contrast-125" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJx-BPdwOy0kn_1GAYJ2a6Adl2IHbSDbVV4TNT3JC9lyCN74LzYpfmxYLi_5jjjx6Mf-PfNIQskl9oerCVjdWPnoNf5MWCdbKfUox3UYptbRMtHEH4wz5SPhV9wiG6fz8IEVFtifdTxayXnpI_iN3uCyaB8mbqE_4o7nQgvhZa_L6zdvDhSjVoyPlsJyRPFLMAORO2AA42pYUku2KQQucHLll8LeHmxzycbYr4ww" />
-						<div class="absolute bottom-2 left-2 px-1.5 py-0.5 bg-surface-container-lowest/90 font-label-sm text-[10px] text-primary-container font-mono border border-primary-container/30">SYNAPSE // 01</div>
+						<img alt="SYNAPSE OVERLOAD EP Cover" class="w-full h-full object-cover contrast-125" src="https://i.scdn.co/image/ab67616d0000b273de3c04b5fc750b68899b20a9" />
+
 					</div>
 					<div class="mt-space-md flex flex-col gap-1">
-						<span class="font-label-sm text-[10px] text-primary-container font-mono tracking-wider">REF: KNT-EP04 // EDICIÓN VINILO</span>
-						<h3 class="font-headline-sm text-headline-sm uppercase font-bold text-primary">SYNAPSE OVERLOAD // EP_04</h3>
+						<span class="font-label-sm text-[10px] text-primary-container font-mono tracking-wider">10 DE OCTUBRE DE 2007</span>
+						<h3 class="font-headline-sm text-headline-sm uppercase font-bold text-primary">IN RAINBOWS</h3>
 						<div class="font-label-sm text-[11px] text-on-surface-variant font-mono mt-1 flex flex-col gap-0.5">
-							<span class="">ESPECTRO DE GÉNERO: CLUB DECONSTRUIDO / TECHNO INDUSTRIAL</span>
-							<span class="">DURACIÓN TOTAL: 48:19 (8 PISTAS)</span>
+							<span class="">In Rainbows es el séptimo álbum de estudio de la banda británica de rock alternativo Radiohead. Originalmente se lanzó el 10 de octubre de 2007 en formato digital y se convino que los interesados en descargarlo pagaran lo que creyeran conveniente. </span>
+	
 						</div>
 					</div>
 				</div>

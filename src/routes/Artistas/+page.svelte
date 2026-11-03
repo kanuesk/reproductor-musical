@@ -17,11 +17,11 @@
 		},
 		{
 			nombre: 'Billie Eilish',
-			imagen: 'https://i.scdn.co/image/ab67616d00001e02ed317ec13d3de9e01fb99c9e'
+			imagen: 'https://www.impericon.com/cdn/shop/articles/20251211_BEtrailerscreenshot_1_52fddf51-601c-49c2-af5d-df79da40fb82.jpg?v=1765455896&width=1475'
 		},
 		{
 			nombre: 'Radiohead',
-			imagen: 'https://i.scdn.co/image/ab6761610000e5eb959527d2fabc9c64287e57b9'
+			imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAMezSLeaj6VmnS-VMnJ1Tsu0npep6Wd1cVztLO4LwAeO3hyqBlfcush4&s=10'
 		},
 		{
 			nombre: 'Rihanna',
