@@ -1,0 +1,142 @@
+﻿Loading svelte-check in workspace: c:\Users\HPPROBOOK G7\Desktop\reproductor-musical
+Getting Svelte diagnostics...
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+layout.svelte[39m:340:3
+[33mWarn[39m: Unused CSS selector "html"
+https://svelte.dev/e/css_unused_selector (svelte)
+[36m	@layer base {
+		[35mhtml[36m,
+		body {[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+layout.svelte[39m:341:3
+[33mWarn[39m: Unused CSS selector "body"
+https://svelte.dev/e/css_unused_selector (svelte)
+[36m		html,
+		[35mbody[36m {
+			margin: 0;[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+layout.svelte[39m:345:3
+[33mWarn[39m: Unused CSS selector "body"
+https://svelte.dev/e/css_unused_selector (svelte)
+[36m		}
+		[35mbody[36m {
+			overscroll-behavior: none;[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+layout.svelte[39m:352:2
+[33mWarn[39m: Unused CSS selector ".neon-glow-title"
+https://svelte.dev/e/css_unused_selector (svelte)
+[36m	}
+	[35m.neon-glow-title[36m {
+		text-shadow: 0 0 12px rgba(56, 189, 248, 0.6), 0 0 30px rgba(56, 189, 248, 0.4), 0 0 60px rgba(56, 189, 248, 0.25);[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+layout.svelte[39m:356:2
+[33mWarn[39m: Unused CSS selector ".neon-glow-title:hover"
+https://svelte.dev/e/css_unused_selector (svelte)
+[36m	}
+	[35m.neon-glow-title:hover[36m {
+		text-shadow: 0 0 18px rgba(56, 189, 248, 0.9), 0 0 45px rgba(56, 189, 248, 0.7), 0 0 85px rgba(56, 189, 248, 0.5);[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+page.svelte[39m:19:168
+[33mWarn[39m: '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute (svelte)
+[36m		</div>
+		<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-container uppercase tracking-wider transition-colors flex items-center gap-1 group" [35mhref="#"[36m>
+			<span class="">VER TODO</span>[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+page.svelte[39m:125:6
+[33mWarn[39m: `<img>` element should have an alt attribute
+https://svelte.dev/e/a11y_missing_attribute (svelte)
+[36m				<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
+					[35m<img class="w-full h-full object-cover contrast-125 group-hover:scale-105 transition-transform duration-300" data-alt="Artist" src="https://i.scdn.co/image/ab6761610000e5eb997cc9a4aec335d46c9481fd" />[36m
+				</div>[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+page.svelte[39m:137:6
+[33mWarn[39m: `<img>` element should have an alt attribute
+https://svelte.dev/e/a11y_missing_attribute (svelte)
+[36m				<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
+					[35m<img class="w-full h-full object-cover contrast-125 group-hover:scale-105 transition-transform duration-300" data-alt="Artist" src="https://i.scdn.co/image/ab67616d00001e02ed317ec13d3de9e01fb99c9e" />[36m
+				</div>[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+page.svelte[39m:149:6
+[33mWarn[39m: `<img>` element should have an alt attribute
+https://svelte.dev/e/a11y_missing_attribute (svelte)
+[36m				<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
+					[35m<img class="w-full h-full object-cover contrast-125 group-hover:scale-105 transition-transform duration-300" data-alt="Artist" src="https://i.scdn.co/image/ab6761610000e5eb81f47f44084e0a09b5f0fa13" />[36m
+				</div>[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+page.svelte[39m:161:6
+[33mWarn[39m: `<img>` element should have an alt attribute
+https://svelte.dev/e/a11y_missing_attribute (svelte)
+[36m				<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
+					[35m<img class="w-full h-full object-cover contrast-125 group-hover:scale-105 transition-transform duration-300" data-alt="Artist" src="https://i.scdn.co/image/ab6761610000e5ebcb565a8e684e3be458d329ac" />[36m
+				</div>[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+page.svelte[39m:173:6
+[33mWarn[39m: `<img>` element should have an alt attribute
+https://svelte.dev/e/a11y_missing_attribute (svelte)
+[36m				<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
+					[35m<img class="w-full h-full object-cover contrast-125 group-hover:scale-105 transition-transform duration-300" data-alt="Artist" src="https://i.scdn.co/image/ab6761610000e5eb959527d2fabc9c64287e57b9" />[36m
+				</div>[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\Artistas\+page.svelte[39m:46:4
+[33mWarn[39m: Visible, non-interactive element `<article>` with a click event must be accompanied by a keyboard event handler. Consider whether an interactive element such as `<button type="button">` or `<a>` might be more appropriate
+https://svelte.dev/e/a11y_click_events_have_key_events (svelte)
+[36m		{#each artistas as artista}
+			[35m<article
+				class="group relative aspect-[3/4] overflow-hidden border border-surface-container-high/70 bg-surface-container-lowest transition-colors duration-300 cursor-pointer"
+				onclick={() => goto(`/Visualizacion del Artista?nombre=${encodeURIComponent(artista.nombre)}`)}
+			>
+				<img
+					class="absolute inset-0 h-full w-full object-cover contrast-125 saturate-[0.85] transition-transform duration-500 group-hover:scale-105"
+					src={artista.imagen}
+					alt={`Retrato de ${artista.nombre}`}
+					loading="lazy"
+				/>
+				<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+
+				<div class="relative flex h-full flex-col justify-end p-space-md">
+					<h2
+						class="font-headline-sm text-xl font-bold leading-[0.95] tracking-tight text-white lg:text-2xl"
+					>
+						{artista.nombre}
+					</h2>
+				</div>
+			</article>[36m
+		{/each}[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\Artistas\+page.svelte[39m:46:4
+[33mWarn[39m: Non-interactive element `<article>` should not be assigned mouse or keyboard event listeners
+https://svelte.dev/e/a11y_no_noninteractive_element_interactions (svelte)
+[36m		{#each artistas as artista}
+			[35m<article
+				class="group relative aspect-[3/4] overflow-hidden border border-surface-container-high/70 bg-surface-container-lowest transition-colors duration-300 cursor-pointer"
+				onclick={() => goto(`/Visualizacion del Artista?nombre=${encodeURIComponent(artista.nombre)}`)}
+			>
+				<img
+					class="absolute inset-0 h-full w-full object-cover contrast-125 saturate-[0.85] transition-transform duration-500 group-hover:scale-105"
+					src={artista.imagen}
+					alt={`Retrato de ${artista.nombre}`}
+					loading="lazy"
+				/>
+				<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+
+				<div class="relative flex h-full flex-col justify-end p-space-md">
+					<h2
+						class="font-headline-sm text-xl font-bold leading-[0.95] tracking-tight text-white lg:text-2xl"
+					>
+						{artista.nombre}
+					</h2>
+				</div>
+			</article>[36m
+		{/each}[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\Visualizacion del Artista\+page.svelte[39m:81:27
+[31mError[39m: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ 'Michael Jackson': { imagen: string; nombre: string; descripcion: string; pistas: { nombre: string; duracion: string; imagen: string; }[]; }; 'Bad Bunny': { imagen: string; nombre: string; descripcion: string; pistas: { ...; }[]; }; 'Lana Del Rey': { ...; }; 'Billie Eilish': { ...; }; Radiohead: { ...; }; Rihanna:...'.
+  No index signature with a parameter of type 'string' was found on type '{ 'Michael Jackson': { imagen: string; nombre: string; descripcion: string; pistas: { nombre: string; duracion: string; imagen: string; }[]; }; 'Bad Bunny': { imagen: string; nombre: string; descripcion: string; pistas: { ...; }[]; }; 'Lana Del Rey': { ...; }; 'Billie Eilish': { ...; }; Radiohead: { ...; }; Rihanna:...'. (ts)
+[36m	
+	const artista = $derived([35martistasInfo[nombreArtista][36m || artistasInfo['Michael Jackson']);
+	const artistaImagen = $derived(artista.imagen);[39m
+
+====================================
+[31msvelte-check found 1 error and 13 warnings in 4 files
+[39m

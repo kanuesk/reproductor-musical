@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { onMount, onDestroy } from 'svelte';
 	import {
 		CancionEstado,
 		AlternarReproduccion,
@@ -16,6 +17,12 @@
 	if (typeof window !== 'undefined') {
 		(window as any).__reproductorObtenerAnalizador = ObtenerAnalizador;
 	}
+
+	let threeContainer: HTMLDivElement;
+	let animationId: number;
+	let resizeObserver: ResizeObserver | null = null;
+	let mouseMoveHandler: ((event: MouseEvent) => void) | null = null;
+	let resizeHandler: (() => void) | null = null;
 
 	const pista = $derived(CancionEstado.actual);
 	const titulo = $derived(pista?.title ?? 'Sin reproducción');
@@ -150,15 +157,20 @@
 
 		<!-- Interactive Three.js 3D Background Canvas (confinado al marco del reproductor) -->
 		<div class="absolute inset-0 w-full h-full bg-transparent z-0 pointer-events-none" style="display:block;">
-			<div id="threejs-container-ANIMATION_73" style="width:100%;height:100%"></div>
+			<div bind:this={threeContainer} data-three-container style="width:100%;height:100%"></div>
 			<script>
 				(function iniciarAnimacion(intentos = 0) {
-					const container = document.getElementById("threejs-container-ANIMATION_73");
-					if (!container || !container.isConnected) return;
+					const container = document.querySelector('[data-three-container]') || document.getElementById("threejs-container-ANIMATION_73");
+					if (!container || !container.isConnected) {
+						if (intentos < 300) {
+							window.setTimeout(() => iniciarAnimacion(intentos + 1), 50);
+						}
+						return;
+					}
 
 					// Espera a que Three.js y el marco del reproductor tengan tamaño real.
 					if (typeof THREE === "undefined" || container.clientWidth === 0 || container.clientHeight === 0) {
-						if (intentos < 200) {
+						if (intentos < 300) {
 							window.setTimeout(() => iniciarAnimacion(intentos + 1), 50);
 						}
 						return;

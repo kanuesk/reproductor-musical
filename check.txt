@@ -1,0 +1,112 @@
+﻿Loading svelte-check in workspace: c:\Users\HPPROBOOK G7\Desktop\reproductor-musical
+Getting Svelte diagnostics...
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+layout.svelte[39m:340:3
+[33mWarn[39m: Unused CSS selector "html"
+https://svelte.dev/e/css_unused_selector (svelte)
+[36m	@layer base {
+		[35mhtml[36m,
+		body {[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+layout.svelte[39m:341:3
+[33mWarn[39m: Unused CSS selector "body"
+https://svelte.dev/e/css_unused_selector (svelte)
+[36m		html,
+		[35mbody[36m {
+			margin: 0;[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+layout.svelte[39m:345:3
+[33mWarn[39m: Unused CSS selector "body"
+https://svelte.dev/e/css_unused_selector (svelte)
+[36m		}
+		[35mbody[36m {
+			overscroll-behavior: none;[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+layout.svelte[39m:352:2
+[33mWarn[39m: Unused CSS selector ".neon-glow-title"
+https://svelte.dev/e/css_unused_selector (svelte)
+[36m	}
+	[35m.neon-glow-title[36m {
+		text-shadow: 0 0 12px rgba(56, 189, 248, 0.6), 0 0 30px rgba(56, 189, 248, 0.4), 0 0 60px rgba(56, 189, 248, 0.25);[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+layout.svelte[39m:356:2
+[33mWarn[39m: Unused CSS selector ".neon-glow-title:hover"
+https://svelte.dev/e/css_unused_selector (svelte)
+[36m	}
+	[35m.neon-glow-title:hover[36m {
+		text-shadow: 0 0 18px rgba(56, 189, 248, 0.9), 0 0 45px rgba(56, 189, 248, 0.7), 0 0 85px rgba(56, 189, 248, 0.5);[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+page.svelte[39m:19:168
+[33mWarn[39m: '#' is not a valid href attribute
+https://svelte.dev/e/a11y_invalid_attribute (svelte)
+[36m		</div>
+		<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-container uppercase tracking-wider transition-colors flex items-center gap-1 group" [35mhref="#"[36m>
+			<span class="">VER TODO</span>[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+page.svelte[39m:125:6
+[33mWarn[39m: `<img>` element should have an alt attribute
+https://svelte.dev/e/a11y_missing_attribute (svelte)
+[36m				<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
+					[35m<img class="w-full h-full object-cover contrast-125 group-hover:scale-105 transition-transform duration-300" data-alt="Artist" src="https://i.scdn.co/image/ab6761610000e5eb997cc9a4aec335d46c9481fd" />[36m
+				</div>[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+page.svelte[39m:137:6
+[33mWarn[39m: `<img>` element should have an alt attribute
+https://svelte.dev/e/a11y_missing_attribute (svelte)
+[36m				<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
+					[35m<img class="w-full h-full object-cover contrast-125 group-hover:scale-105 transition-transform duration-300" data-alt="Artist" src="https://i.scdn.co/image/ab67616d00001e02ed317ec13d3de9e01fb99c9e" />[36m
+				</div>[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+page.svelte[39m:149:6
+[33mWarn[39m: `<img>` element should have an alt attribute
+https://svelte.dev/e/a11y_missing_attribute (svelte)
+[36m				<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
+					[35m<img class="w-full h-full object-cover contrast-125 group-hover:scale-105 transition-transform duration-300" data-alt="Artist" src="https://i.scdn.co/image/ab6761610000e5eb81f47f44084e0a09b5f0fa13" />[36m
+				</div>[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+page.svelte[39m:161:6
+[33mWarn[39m: `<img>` element should have an alt attribute
+https://svelte.dev/e/a11y_missing_attribute (svelte)
+[36m				<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
+					[35m<img class="w-full h-full object-cover contrast-125 group-hover:scale-105 transition-transform duration-300" data-alt="Artist" src="https://i.scdn.co/image/ab6761610000e5ebcb565a8e684e3be458d329ac" />[36m
+				</div>[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\+page.svelte[39m:173:6
+[33mWarn[39m: `<img>` element should have an alt attribute
+https://svelte.dev/e/a11y_missing_attribute (svelte)
+[36m				<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
+					[35m<img class="w-full h-full object-cover contrast-125 group-hover:scale-105 transition-transform duration-300" data-alt="Artist" src="https://i.scdn.co/image/ab6761610000e5eb959527d2fabc9c64287e57b9" />[36m
+				</div>[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\Artistas\+page.svelte[39m:32:18
+[31mError[39m: Unexpected token
+https://svelte.dev/e/js_parse_error
+
+If you expect this syntax to work, here are some suggestions: 
+If you use typescript with `svelte-preprocess`, did you add `lang="ts"` to your `script` tag? 
+Did you setup a `svelte.config.js` or `vite.config.js`? 
+See https://github.com/sveltejs/language-tools/tree/master/docs#using-with-preprocessors for more info. (svelte)
+[36m	let mostrarVideoMJ = $state(false);
+	let videoElement[35m[36m: HTMLVideoElement | null = $state(null);
+	let timeoutMostrar: ReturnType<typeof setTimeout> | null = null;[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\Artistas\+page.svelte[39m:32:20
+[31mError[39m: Type annotations can only be used in TypeScript files. (js)
+[36m	let mostrarVideoMJ = $state(false);
+	let videoElement: [35mHTMLVideoElement | null[36m = $state(null);
+	let timeoutMostrar: ReturnType<typeof setTimeout> | null = null;[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\Artistas\+page.svelte[39m:33:22
+[31mError[39m: Type annotations can only be used in TypeScript files. (js)
+[36m	let videoElement: HTMLVideoElement | null = $state(null);
+	let timeoutMostrar: [35mReturnType<typeof setTimeout> | null[36m = null;
+	let timeoutOcultar: ReturnType<typeof setTimeout> | null = null;[39m
+
+c:\Users\HPPROBOOK G7\Desktop\reproductor-musical\[32msrc\routes\Artistas\+page.svelte[39m:34:22
+[31mError[39m: Type annotations can only be used in TypeScript files. (js)
+[36m	let timeoutMostrar: ReturnType<typeof setTimeout> | null = null;
+	let timeoutOcultar: [35mReturnType<typeof setTimeout> | null[36m = null;[39m
+
+====================================
+[31msvelte-check found 4 errors and 11 warnings in 3 files
+[39m
