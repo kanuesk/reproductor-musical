@@ -159,7 +159,7 @@
 	<div class="grid grid-cols-3 md:grid-cols-6 gap-space-sm sm:gap-space-md">
 		{#each artistas as artista}
 			<!-- Tarjeta compacta: retrato vertical con el nombre sobreimpreso, igual que en /Artistas. -->
-			<a class="group relative aspect-[3/4] min-w-0 overflow-hidden border border-surface-container-high/70 bg-surface-container-lowest transition-colors duration-300" href={urlArtista(artista.nombre)} aria-label={`Ir al artista ${artista.nombre}`}>
+			<a class="group relative aspect-[2/3] md:aspect-[9/16] min-w-0 overflow-hidden border border-surface-container-high/70 bg-surface-container-lowest transition-colors duration-300" href={urlArtista(artista.nombre)} aria-label={`Ir al artista ${artista.nombre}`}>
 				<img
 					class="absolute inset-0 h-full w-full object-cover contrast-125 saturate-[0.85] transition-transform duration-500 group-hover:scale-105"
 					src={artista.imagen}
