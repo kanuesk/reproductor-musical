@@ -4,7 +4,42 @@
 
 
     const { data } = $props()
-  
+
+    // Artistas destacados (mismo directorio que la página /Artistas).
+    const artistas = [
+        {
+            nombre: 'Michael Jackson',
+            imagen: 'https://i.scdn.co/image/ab6761610000e5eb997cc9a4aec335d46c9481fd'
+        },
+        {
+            nombre: 'Bad Bunny',
+            imagen: 'https://i.scdn.co/image/ab6761610000e5eb81f47f44084e0a09b5f0fa13'
+        },
+        {
+            nombre: 'Lana Del Rey',
+            imagen:
+                'https://pj7whwrdkkgljlz7.public.blob.vercel-storage.com/0d6ddb2a-45f0-4827-b2ce-82f78310248b.webp'
+        },
+        {
+            nombre: 'Billie Eilish',
+            imagen:
+                'https://www.impericon.com/cdn/shop/articles/20251211_BEtrailerscreenshot_1_52fddf51-601c-49c2-af5d-df79da40fb82.jpg?v=1765455896&width=1475'
+        },
+        {
+            nombre: 'Radiohead',
+            imagen:
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAMezSLeaj6VmnS-VMnJ1Tsu0npep6Wd1cVztLO4LwAeO3hyqBlfcush4&s=10'
+        },
+        {
+            nombre: 'Rihanna',
+            imagen: 'https://i.scdn.co/image/ab6761610000e5ebcb565a8e684e3be458d329ac'
+        }
+    ];
+
+    /** @param {string} nombre */
+    const urlArtista = (nombre) =>
+        `/Visualizacion%20del%20Artista?nombre=${encodeURIComponent(nombre)}`;
+
 </script>
 
 
@@ -112,72 +147,32 @@
 
 <!-- SECTION 3: FAVORITE ARTISTS -->
 <section class="flex flex-col gap-space-md mt-8">
-	<div class="flex items-center justify-between pb-space-xs">
+	<div class="flex flex-wrap items-center justify-between gap-2 pb-space-xs">
 		<div class="flex items-baseline gap-space-sm">
 			<h2 class="font-headline-md text-headline-md uppercase font-bold tracking-tight text-[#38bdf8]">TUS ARTISTAS FAVORITOS</h2>
 		</div>
+		<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary-container uppercase tracking-wider transition-colors flex items-center gap-1 group" href="/Artistas">
+			<span class="">VER TODO</span>
+			<span class="material-symbols-outlined text-[14px] group-hover:translate-x-0.5 transition-transform">arrow_forward</span>
+		</a>
 	</div>
-	<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-space-md">
-		<!-- Artist 1 -->
-		<article class="p-space-md bg-surface-container-lowest flex flex-col items-center text-center gap-space-sm group hover:bg-surface-container-low transition-colors duration-200">
-			<div class="relative w-24 h-24 rounded-full overflow-hidden p-1 bg-surface-container-high group-hover:bg-primary-container transition-colors duration-300">
-				<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
-					<img class="w-full h-full object-cover contrast-125 group-hover:scale-105 transition-transform duration-300" data-alt="Artist" src="https://i.scdn.co/image/ab6761610000e5eb997cc9a4aec335d46c9481fd" />
+	<div class="grid grid-cols-3 md:grid-cols-6 gap-space-sm sm:gap-space-md">
+		{#each artistas as artista}
+			<!-- Tarjeta compacta: retrato vertical con el nombre sobreimpreso, igual que en /Artistas. -->
+			<a class="group relative aspect-[3/4] min-w-0 overflow-hidden border border-surface-container-high/70 bg-surface-container-lowest transition-colors duration-300" href={urlArtista(artista.nombre)} aria-label={`Ir al artista ${artista.nombre}`}>
+				<img
+					class="absolute inset-0 h-full w-full object-cover contrast-125 saturate-[0.85] transition-transform duration-500 group-hover:scale-105"
+					src={artista.imagen}
+					alt={`Retrato de ${artista.nombre}`}
+					loading="lazy"
+				/>
+				<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+				<div class="absolute inset-0 border border-transparent group-hover:border-[#38bdf8]/60 transition-colors duration-300"></div>
+				<div class="relative flex h-full flex-col justify-end p-space-sm sm:p-space-md">
+					<h3 class="font-headline-sm text-label-md sm:text-headline-sm font-bold leading-[0.95] tracking-tight text-white truncate group-hover:text-[#38bdf8] transition-colors">{artista.nombre}</h3>
 				</div>
-			</div>
-			<div class="flex flex-col gap-0.5 w-full">
-				<h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate group-hover:text-primary-container transition-colors">Michael Jackson</h3>
-			</div>
-			<button class="mt-2 w-full py-1.5 bg-surface-container group-hover:bg-primary-container group-hover:text-on-primary text-primary font-label-sm text-label-sm uppercase font-semibold tracking-wider transition-colors duration-200" type="button">IR AL ARTISTA</button>
-		</article>
-		<!-- Artist 2 -->
-		<article class="p-space-md bg-surface-container-lowest flex flex-col items-center text-center gap-space-sm group hover:bg-surface-container-low transition-colors duration-200">
-			<div class="relative w-24 h-24 rounded-full overflow-hidden p-1 bg-surface-container-high group-hover:bg-primary-container transition-colors duration-300">
-				<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
-					<img class="w-full h-full object-cover contrast-125 group-hover:scale-105 transition-transform duration-300" data-alt="Artist" src="https://i.scdn.co/image/ab67616d00001e02ed317ec13d3de9e01fb99c9e" />
-				</div>
-			</div>
-			<div class="flex flex-col gap-0.5 w-full">
-				<h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate group-hover:text-primary-container transition-colors">Billie Eilish</h3>
-			</div>
-			<button class="mt-2 w-full py-1.5 bg-surface-container group-hover:bg-primary-container group-hover:text-on-primary text-primary font-label-sm text-label-sm uppercase font-semibold tracking-wider transition-colors duration-200" type="button">IR AL ARTISTA</button>
-		</article>
-		<!-- Artist 3 -->
-		<article class="p-space-md bg-surface-container-lowest flex flex-col items-center text-center gap-space-sm group hover:bg-surface-container-low transition-colors duration-200">
-			<div class="relative w-24 h-24 rounded-full overflow-hidden p-1 bg-surface-container-high group-hover:bg-primary-container transition-colors duration-300">
-				<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
-					<img class="w-full h-full object-cover contrast-125 group-hover:scale-105 transition-transform duration-300" data-alt="Artist" src="https://i.scdn.co/image/ab6761610000e5eb81f47f44084e0a09b5f0fa13" />
-				</div>
-			</div>
-			<div class="flex flex-col gap-0.5 w-full">
-				<h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate group-hover:text-primary-container transition-colors">Bad Bunny</h3>
-			</div>
-			<button class="mt-2 w-full py-1.5 bg-surface-container group-hover:bg-primary-container group-hover:text-on-primary text-primary font-label-sm text-label-sm uppercase font-semibold tracking-wider transition-colors duration-200" type="button">IR AL ARTISTA</button>
-		</article>
-		<!-- Artist 4 -->
-		<article class="p-space-md bg-surface-container-lowest flex flex-col items-center text-center gap-space-sm group hover:bg-surface-container-low transition-colors duration-200">
-			<div class="relative w-24 h-24 rounded-full overflow-hidden p-1 bg-surface-container-high group-hover:bg-primary-container transition-colors duration-300">
-				<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
-					<img class="w-full h-full object-cover contrast-125 group-hover:scale-105 transition-transform duration-300" data-alt="Artist" src="https://i.scdn.co/image/ab6761610000e5ebcb565a8e684e3be458d329ac" />
-				</div>
-			</div>
-			<div class="flex flex-col gap-0.5 w-full">
-				<h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate group-hover:text-primary-container transition-colors">Rihanna</h3>
-			</div>
-			<button class="mt-2 w-full py-1.5 bg-surface-container group-hover:bg-primary-container group-hover:text-on-primary text-primary font-label-sm text-label-sm uppercase font-semibold tracking-wider transition-colors duration-200" type="button">IR AL ARTISTA</button>
-		</article>
-		<!-- Artist 5 -->
-		<article class="p-space-md bg-surface-container-lowest flex flex-col items-center text-center gap-space-sm group hover:bg-surface-container-low transition-colors duration-200">
-			<div class="relative w-24 h-24 rounded-full overflow-hidden p-1 bg-surface-container-high group-hover:bg-primary-container transition-colors duration-300">
-				<div class="w-full h-full rounded-full overflow-hidden bg-surface-dim">
-					<img class="w-full h-full object-cover contrast-125 group-hover:scale-105 transition-transform duration-300" data-alt="Artist" src="https://i.scdn.co/image/ab6761610000e5eb959527d2fabc9c64287e57b9" />
-				</div>
-			</div>
-			<div class="flex flex-col gap-0.5 w-full">
-				<h3 class="font-headline-sm text-headline-sm text-primary font-bold truncate group-hover:text-primary-container transition-colors">Radiohead</h3>
-			</div>
-			<button class="mt-2 w-full py-1.5 bg-surface-container group-hover:bg-primary-container group-hover:text-on-primary text-primary font-label-sm text-label-sm uppercase font-semibold tracking-wider transition-colors duration-200" type="button">IR AL ARTISTA</button>
-		</article>
+			</a>
+		{/each}
 	</div>
 </section>
 
