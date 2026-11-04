@@ -1,83 +1,79 @@
 <script lang="ts">
 	import { page } from '$app/state';
-	import { ActualizarCancionActual } from '$lib/state/cancion.svelte.js';
-	
+	import { ActualizarCancionActual, CancionEstado } from '$lib/state/cancion.svelte.js';
+	import { albumesPorArtista } from '$lib/data/albumes';
+
+	let { data } = $props();
+
+	let alturaColumnaAlbum = $state(0);
+
 	const nombreArtista = $derived(page.url.searchParams.get('nombre') || 'Michael Jackson');
-	
+
 	const artistasInfo: Record<string, any> = {
 		'Michael Jackson': {
 			imagen: 'https://i.scdn.co/image/ab6761610000e5eb997cc9a4aec335d46c9481fd',
 			nombre: 'MICHAEL JACKSON',
-			descripcion: 'Rey del Pop. Pionero de la música pop moderna con coreografías icónicas y videos musicales revolucionarios.',
-			pistas: [
-				{ id: 'mj1', nombre: 'Billie Jean', duracion: '04:54', imagen: 'https://i.scdn.co/image/ab67616d00001e02d59a6abeb186a9c9c8e6e7e6', audio: 'https://pj7whwrdkkgljlz7.public.blob.vercel-storage.com/4f124454-1aef-4fd8-a45c-32229bd4d604.webm', artist: { name: 'Michael Jackson' } },
-			]
+			descripcion: 'Rey del Pop. Pionero de la música pop moderna con coreografías icónicas y videos musicales revolucionarios.'
 		},
 		'Bad Bunny': {
 			imagen: 'https://i.scdn.co/image/ab6761610000e5eb81f47f44084e0a09b5f0fa13',
 			nombre: 'BAD BUNNY',
-			descripcion: 'Artista puertorriqueño, referente del reggaetón y trap latino. Innovador y con gran impacto global.',
-			pistas: [
-				{ nombre: 'Tití Me Preguntó', duracion: '04:03', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Moscow Mule', duracion: '04:05', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Después de la Playa', duracion: '03:50', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Efecto', duracion: '03:33', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Neverita', duracion: '02:53', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' }
-			]
+			descripcion: 'Artista puertorriqueño, referente del reggaetón y trap latino. Innovador y con gran impacto global.'
 		},
 		'Lana Del Rey': {
 			imagen: 'https://pj7whwrdkkgljlz7.public.blob.vercel-storage.com/0d6ddb2a-45f0-4827-b2ce-82f78310248b.webp',
 			nombre: 'LANA DEL REY',
-			descripcion: 'Cantante y compositora estadounidense, conocida por su estilo melancólico y cinematográfico.',
-			pistas: [
-				{ nombre: 'Summertime Sadness', duracion: '04:25', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Born to Die', duracion: '04:46', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Video Games', duracion: '04:42', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Blue Jeans', duracion: '03:30', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Young and Beautiful', duracion: '03:56', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' }
-			]
+			descripcion: 'Cantante y compositora estadounidense, conocida por su estilo melancólico y cinematográfico.'
 		},
 		'Billie Eilish': {
 			imagen: 'https://www.impericon.com/cdn/shop/articles/20251211_BEtrailerscreenshot_1_52fddf51-601c-49c2-af5d-df79da40fb82.jpg?v=1765455896&width=1475',
 			nombre: 'BILLIE EILISH',
-			descripcion: 'Cantante y compositora estadounidense, conocida por su estilo único y letras introspectivas.',
-			pistas: [
-				{ nombre: 'Bad Guy', duracion: '03:14', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'When the Party\'s Over', duracion: '03:19', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Bury a Friend', duracion: '03:13', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Happier Than Ever', duracion: '04:58', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Therefore I Am', duracion: '02:54', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' }
-			]
+			descripcion: 'Cantante y compositora estadounidense, conocida por su estilo único y letras introspectivas.'
 		},
 		'Radiohead': {
 			imagen: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAMezSLeaj6VmnS-VMnJ1Tsu0npep6Wd1cVztLO4LwAeO3hyqBlfcush4&s=10',
 			nombre: 'RADIOHEAD',
-			descripcion: 'Banda británica de rock alternativo, conocida por su innovación y experimentación musical.',
-			pistas: [
-				{ nombre: 'Creep', duracion: '03:56', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Karma Police', duracion: '04:21', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Paranoid Android', duracion: '06:23', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'No Surprises', duracion: '03:49', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Street Spirit', duracion: '04:12', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' }
-			]
+			descripcion: 'Banda británica de rock alternativo, conocida por su innovación y experimentación musical.'
 		},
 		'Rihanna': {
 			imagen: 'https://i.scdn.co/image/ab6761610000e5ebcb565a8e684e3be458d329ac',
 			nombre: 'RIHANNA',
-			descripcion: 'Cantante barbadense, ícono de la música pop y R&B con gran influencia global.',
-			pistas: [
-				{ nombre: 'Umbrella', duracion: '04:35', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'We Found Love', duracion: '03:35', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Diamonds', duracion: '03:45', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Rude Boy', duracion: '03:43', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' },
-				{ nombre: 'Work', duracion: '03:39', imagen: 'https://i.scdn.co/image/ab67616d00001e02b8b9c0c8c0c8c0c8c0c8c0c8' }
-			]
+			descripcion: 'Cantante barbadense, ícono de la música pop y R&B con gran influencia global.'
 		}
 	};
-	
+
+	const normalizar = (texto: string) =>
+		texto
+			.normalize('NFD')
+			.replace(/[\u0300-\u036f]/g, '')
+			.trim()
+			.toLowerCase();
+
 	const artista = $derived(artistasInfo[nombreArtista] || artistasInfo['Michael Jackson']);
-	const artistaImagen = $derived(artista.imagen);
-	const pistasMasEscuchadas = $derived(artista.pistas);
+
+	const album = $derived(
+		albumesPorArtista[nombreArtista] ?? albumesPorArtista['Michael Jackson']
+	);
+
+	// Solo se muestran las pistas que existen en el catálogo registrado.
+	const pistasMasEscuchadas = $derived(
+		(data.tracks ?? []).filter(
+			(track: any) => normalizar(track.artist?.name ?? '') === normalizar(nombreArtista)
+		)
+	);
+
+	const artistaImagen = $derived(pistasMasEscuchadas[0]?.artist?.image ?? artista.imagen);
+
+	const imagenPista = (pista: any) =>
+		pista.album?.image ??
+		pista.album?.thumbnail ??
+		pista.artist?.image ??
+		pista.artist?.thumbnail ??
+		artistaImagen;
+
+	function reproducir(pista: any) {
+		ActualizarCancionActual(pista);
+	}
 </script>
 
 <svelte:head>
@@ -153,7 +149,7 @@
 		</div>
 	</div>
 
-	<!-- Contenedor Dividido: Top 5 Pistas Más Escuchadas -->
+	<!-- Contenedor Dividido: Pistas Más Escuchadas (catálogo registrado) -->
 	<div class="w-full flex flex-col mb-space-xl">
 		<div class="w-full flex flex-col bg-surface-container-lowest p-space-md">
 			<div class="flex items-center justify-between pb-space-sm mb-space-sm">
@@ -161,23 +157,70 @@
 					<span class="w-2 h-2 bg-primary-container"></span>
 					<h2 class="font-headline-sm text-headline-sm uppercase font-bold tracking-wider text-primary">PISTAS MÁS ESCUCHADAS</h2>
 				</div>
+				<span class="font-mono text-[10px] uppercase tracking-wider text-on-surface-variant">
+					{pistasMasEscuchadas.length.toString().padStart(2, '0')} PISTAS
+				</span>
 			</div>
 			<div class="flex flex-col gap-1 w-full">
-				{#each pistasMasEscuchadas as pista, i}
-					<div class="group flex items-center justify-between p-space-sm bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer">
+				{#each pistasMasEscuchadas as pista, i (pista.id)}
+					{@const esActual = CancionEstado.actual?.id === pista.id}
+					<button
+						type="button"
+						class="group flex w-full items-center justify-between gap-space-sm p-space-sm text-left transition-colors cursor-pointer {esActual
+							? 'bg-surface-container'
+							: 'bg-surface-container-low hover:bg-surface-container'}"
+						aria-label={`${esActual && CancionEstado.reproduciendo ? 'Pausar' : 'Reproducir'} ${pista.title}`}
+						onclick={() => reproducir(pista)}
+					>
 						<div class="flex items-center gap-space-md min-w-0 flex-1">
 							<div class="w-6 flex items-center justify-center shrink-0 font-mono text-[11px] text-on-surface-variant">
-								{i + 1}
+								{#if esActual && CancionEstado.reproduciendo}
+									<span class="material-symbols-outlined text-[16px] text-primary-container">equalizer</span>
+								{:else}
+									{i + 1}
+								{/if}
 							</div>
 							<div class="w-10 h-10 shrink-0 bg-surface-container-high overflow-hidden">
-								<img class="w-full h-full object-cover contrast-125" alt={pista.nombre} src={pista.imagen} />
+								<img
+									class="w-full h-full object-cover contrast-125"
+									alt={`Portada de ${pista.album?.title ?? pista.title}`}
+									src={imagenPista(pista)}
+									loading="lazy"
+								/>
 							</div>
 							<div class="min-w-0 flex-1">
-								<div class="font-headline-sm text-headline-sm text-primary uppercase truncate">{pista.nombre}</div>
-								<div class="font-label-md text-label-md text-on-surface-variant uppercase truncate">{nombreArtista.toUpperCase()}</div>
+								<div
+									class="font-headline-sm text-headline-sm uppercase truncate transition-colors {esActual
+										? 'text-primary-container'
+										: 'text-primary group-hover:text-primary-container'}"
+								>
+									{pista.title}
+								</div>
+								<div class="font-label-md text-label-md text-on-surface-variant uppercase truncate">
+									{pista.artist?.name ?? nombreArtista}
+									{#if pista.album?.title}
+										<span class="text-on-surface-variant/60"> // {pista.album.title}</span>
+									{/if}
+								</div>
 							</div>
-							<div class="font-label-md text-label-md text-on-surface-variant">{pista.duracion}</div>
 						</div>
+						<span
+							class="material-symbols-outlined shrink-0 text-[22px] transition-colors {esActual
+								? 'text-primary-container'
+								: 'text-on-surface-variant group-hover:text-primary-container'}"
+							style={esActual && CancionEstado.reproduciendo
+								? "font-variation-settings: 'FILL' 1;"
+								: ''}
+						>
+							{esActual && CancionEstado.reproduciendo ? 'pause' : 'play_arrow'}
+						</span>
+					</button>
+				{:else}
+					<div
+						class="flex items-center gap-space-sm p-space-md bg-surface-container-low font-label-md text-label-md uppercase tracking-wider text-on-surface-variant"
+					>
+						<span class="material-symbols-outlined text-[20px]">music_off</span>
+						AÚN NO HAY CANCIONES REGISTRADAS PARA ESTE ARTISTA
 					</div>
 				{/each}
 			</div>
@@ -194,18 +237,57 @@
 		</div>
 		<div class="w-full bg-surface-container-lowest p-space-lg mb-space-lg border border-surface-container-high/60">
 			<div class="flex flex-col lg:flex-row gap-space-xl">
-				<div class="lg:w-80 shrink-0 flex flex-col">
+				<!-- Portada e información del álbum más reciente -->
+				<div class="lg:w-80 shrink-0 flex flex-col lg:self-start" bind:clientHeight={alturaColumnaAlbum}>
 					<div class="relative aspect-square w-full bg-surface-container-high overflow-hidden border border-surface-container-high">
-						<img alt="SYNAPSE OVERLOAD EP Cover" class="w-full h-full object-cover contrast-125" src="https://i.scdn.co/image/ab67616d0000b273de3c04b5fc750b68899b20a9" />
-
+						<img
+							alt={`Portada de ${album.titulo}`}
+							class="w-full h-full object-cover contrast-125"
+							src={album.imagen}
+							loading="lazy"
+						/>
 					</div>
 					<div class="mt-space-md flex flex-col gap-1">
-						<span class="font-label-sm text-[10px] text-primary-container font-mono tracking-wider">10 DE OCTUBRE DE 2007</span>
-						<h3 class="font-headline-sm text-headline-sm uppercase font-bold text-primary">IN RAINBOWS</h3>
-						<div class="font-label-sm text-[11px] text-on-surface-variant font-mono mt-1 flex flex-col gap-0.5">
-							<span class="">In Rainbows es el séptimo álbum de estudio de la banda británica de rock alternativo Radiohead. Originalmente se lanzó el 10 de octubre de 2007 en formato digital y se convino que los interesados en descargarlo pagaran lo que creyeran conveniente. </span>
-	
-						</div>
+						<span class="font-label-sm text-[10px] text-primary-container font-mono tracking-wider">
+							{album.fecha}
+						</span>
+						<h3 class="font-headline-sm text-headline-sm uppercase font-bold text-primary break-words">
+							{album.titulo}
+						</h3>
+						<p class="font-label-sm text-[11px] text-on-surface-variant font-mono mt-1">
+							{album.descripcion}
+						</p>
+					</div>
+				</div>
+
+				<!-- Listado vertical de canciones del álbum -->
+				<div
+					class="w-full min-w-0 flex flex-col lg:flex-1"
+					style={alturaColumnaAlbum > 0 ? `height: ${alturaColumnaAlbum}px` : undefined}
+				>
+					<ol class="tracklist-scroll flex-1 min-h-0 overflow-y-auto flex flex-col gap-1 w-full pr-1">
+						{#each album.canciones as cancion, i}
+							<li
+								class="group flex items-center gap-space-md p-2 bg-surface-container-low hover:bg-surface-container transition-colors"
+							>
+								<span class="w-6 shrink-0 text-center font-mono text-[11px] text-on-surface-variant">
+									{i + 1}
+								</span>
+								<span
+									class="flex-1 min-w-0 font-label-md text-label-md uppercase text-primary group-hover:text-primary-container transition-colors break-words"
+								>
+									{cancion.titulo}
+								</span>
+								<span class="shrink-0 font-mono text-[11px] text-on-surface-variant">
+									{cancion.duracion}
+								</span>
+							</li>
+						{/each}
+					</ol>
+					<div class="flex justify-end pt-space-sm mt-space-xs shrink-0">
+						<span class="font-mono text-[10px] uppercase tracking-wider text-on-surface-variant">
+							{album.canciones.length.toString().padStart(2, '0')} CANCIONES
+						</span>
 					</div>
 				</div>
 			</div>
@@ -221,5 +303,27 @@
 	.neon-glow-title:hover {
 		text-shadow: 0 0 18px rgba(204, 255, 0, 0.9), 0 0 45px rgba(204, 255, 0, 0.7), 0 0 85px rgba(204, 255, 0, 0.5);
 		filter: brightness(1.15);
+	}
+
+	.tracklist-scroll {
+		scrollbar-width: thin;
+		scrollbar-color: var(--color-primary-container, #ccff00) var(--color-surface-container, #1c1c1c);
+	}
+
+	.tracklist-scroll::-webkit-scrollbar {
+		width: 6px;
+	}
+
+	.tracklist-scroll::-webkit-scrollbar-track {
+		background: var(--color-surface-container, #1c1c1c);
+	}
+
+	.tracklist-scroll::-webkit-scrollbar-thumb {
+		background: var(--color-primary-container, #ccff00);
+		border-radius: 9999px;
+	}
+
+	.tracklist-scroll::-webkit-scrollbar-thumb:hover {
+		background: var(--color-primary, #ffffff);
 	}
 </style>
